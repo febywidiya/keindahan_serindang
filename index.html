@@ -3,131 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Pesona Desa Serindang</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header>
-    <nav>
-        <div class="logo">🌿 Desa Serindang</div>
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                Pesona Desa
+            </div>
 
-        <ul>
-            <li><a href="index.html" class="active">Beranda</a></li>
-            <li><a href="profil.html">Profil</a></li>
-            <li><a href="keindahan.html">Keindahan</a></li>
-            <li><a href="potensi.html">Potensi</a></li>
-            <li><a href="galeri.html">Galeri</a></li>
-            <li><a href="kontak.html">Kontak</a></li>
-        </ul>
-    </nav>
-</header>
+            <ul class="nav-menu">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#wisata">Wisata</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#lokasi">Lokasi</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <p>SELAMAT DATANG DI</p>
 
-        <h1>Pesona Desa Serindang</h1>
+    <!-- HERO -->
+    <section class="hero" id="beranda">
 
-        <p>
-            Menjelajahi keindahan alam, kehidupan masyarakat,
-            dan potensi Desa Serindang, Kecamatan Tebas,
-            Kabupaten Sambas.
-        </p>
+        <div class="hero-content">
+            <p class="small-title">SELAMAT DATANG DI</p>
 
-        <a href="profil.html" class="btn">Jelajahi Desa</a>
-    </div>
-</section>
+            <h1>Desa Serindang</h1>
 
-<section class="intro">
-    <h2>Keindahan Desa Serindang</h2>
-
-    <p>
-        Desa Serindang merupakan salah satu desa yang terletak
-        di Kecamatan Tebas, Kabupaten Sambas, Provinsi Kalimantan Barat.
-        Desa ini memiliki suasana pedesaan yang asri serta kehidupan
-        masyarakat yang penuh kebersamaan.
-    </p>
-
-    <div class="cards">
-
-        <div class="card">
-            <span>🌳</span>
-            <h3>Alam yang Asri</h3>
             <p>
-                Lingkungan desa yang hijau memberikan suasana
-                nyaman dan menyegarkan.
+                Menjelajahi keindahan alam, budaya,
+                dan kehidupan masyarakat Desa Serindang.
+            </p>
+
+            <a href="#tentang" class="btn">
+                Jelajahi Desa
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- TENTANG -->
+    <section class="tentang" id="tentang">
+
+        <div class="section-title">
+            <p>KENALI DESA KAMI</p>
+            <h2>Tentang Desa Serindang</h2>
+        </div>
+
+        <div class="tentang-content">
+
+            <div class="tentang-text">
+                <h3>Pesona Desa Serindang</h3>
+
+                <p>
+                    Desa Serindang merupakan salah satu desa yang
+                    berada di Kabupaten Sambas, Kalimantan Barat.
+                    Desa ini memiliki keindahan alam serta kehidupan
+                    masyarakat yang masih kental dengan budaya dan
+                    tradisi lokal.
+                </p>
+
+                <p>
+                    Melalui website ini, kami ingin memperkenalkan
+                    potensi dan keindahan Desa Serindang kepada
+                    masyarakat luas.
+                </p>
+            </div>
+
+            <div class="tentang-card">
+                <span>🌿</span>
+                <h3>Desa yang Indah</h3>
+                <p>
+                    Alam yang asri dan suasana pedesaan
+                    yang nyaman.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- WISATA -->
+    <section class="wisata" id="wisata">
+
+        <div class="section-title">
+            <p>JELAJAHI</p>
+            <h2>Keindahan Desa</h2>
+        </div>
+
+        <div class="wisata-container">
+
+            <div class="wisata-card">
+                <div class="wisata-icon">🌳</div>
+                <h3>Keindahan Alam</h3>
+                <p>
+                    Nikmati suasana alam yang hijau,
+                    tenang, dan menyegarkan.
+                </p>
+            </div>
+
+            <div class="wisata-card">
+                <div class="wisata-icon">🌾</div>
+                <h3>Perkebunan</h3>
+                <p>
+                    Pemandangan perkebunan dan lingkungan
+                    pedesaan yang asri.
+                </p>
+            </div>
+
+            <div class="wisata-card">
+                <div class="wisata-icon">🏡</div>
+                <h3>Kehidupan Desa</h3>
+                <p>
+                    Mengenal kehidupan masyarakat dan
+                    aktivitas sehari-hari di desa.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALERI -->
+    <section class="galeri" id="galeri">
+
+        <div class="section-title">
+            <p>DOKUMENTASI</p>
+            <h2>Galeri Desa</h2>
+        </div>
+
+        <div class="gallery-container">
+
+            <div class="gallery-item">
+                <div class="gallery-placeholder">🌿</div>
+                <p>Keindahan Alam</p>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-placeholder">🌾</div>
+                <p>Pemandangan Desa</p>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-placeholder">🏡</div>
+                <p>Suasana Desa</p>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-placeholder">🌳</div>
+                <p>Lingkungan Desa</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOKASI -->
+    <section class="lokasi" id="lokasi">
+
+        <div class="section-title">
+            <p>TEMUKAN KAMI</p>
+            <h2>Lokasi Desa Serindang</h2>
+        </div>
+
+        <div class="lokasi-container">
+
+            <!-- INFORMASI LOKASI -->
+            <div class="lokasi-info">
+
+                <div class="lokasi-icon">
+                    📍
+                </div>
+
+                <h3>Desa Serindang</h3>
+
+                <p>
+                    Sambas, Kalimantan Barat,
+                    Indonesia
+                </p>
+
+                <p class="lokasi-description">
+                    Temukan lokasi Desa Serindang
+                    melalui Google Maps.
+                </p>
+
+                <a
+                    href="https://maps.app.goo.gl/imujXkkZ4DhwetDR6"
+                    target="_blank"
+                    class="btn-lokasi">
+                    Buka Google Maps
+                </a>
+
+            </div>
+
+
+            <!-- GOOGLE MAPS -->
+            <div class="map-container">
+
+                <iframe
+                    src="https://www.google.com/maps?q=Desa%20Serindang,%20Sambas,%20Kalimantan%20Barat,%20Indonesia&output=embed"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </section>
+
+<!-- SECTION ADUAN -->
+<section class="aduan-section" id="aduan">
+    <div class="aduan-container">
+
+        <div class="aduan-heading">
+            <span class="section-label">LAYANAN MASYARAKAT</span>
+            <h2>Sampaikan Aduan Anda</h2>
+            <p>
+                Sampaikan laporan, kritik, atau saran untuk membantu
+                meningkatkan kenyamanan dan pelayanan di Desa Serindang.
             </p>
         </div>
 
-        <div class="card">
-            <span>🌾</span>
-            <h3>Potensi Desa</h3>
+        <form id="aduanForm" class="aduan-form">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input
+                        type="text"
+                        id="nama"
+                        name="nama"
+                        placeholder="Masukkan nama Anda"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Masukkan email Anda"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="kategori">Kategori Aduan</label>
+                <select id="kategori" name="kategori" required>
+                    <option value="">Pilih kategori</option>
+                    <option value="Infrastruktur">Infrastruktur</option>
+                    <option value="Lingkungan">Lingkungan</option>
+                    <option value="Fasilitas Umum">Fasilitas Umum</option>
+                    <option value="Pelayanan Desa">Pelayanan Desa</option>
+                    <option value="Keamanan">Keamanan</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="judul">Judul Aduan</label>
+                <input
+                    type="text"
+                    id="judul"
+                    name="judul"
+                    placeholder="Contoh: Jalan desa rusak"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="deskripsi">Deskripsi Aduan</label>
+                <textarea
+                    id="deskripsi"
+                    name="deskripsi"
+                    rows="5"
+                    placeholder="Jelaskan aduan atau saran Anda..."
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit" class="btn-aduan">
+                Kirim Aduan →
+            </button>
+
+            <p id="aduanMessage"></p>
+
+        </form>
+    </div>
+</section>
+    
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-content">
+
+            <h3>Pesona Desa Serindang</h3>
+
             <p>
-                Memiliki berbagai potensi alam dan kegiatan
-                masyarakat yang menarik.
+                Mengenal keindahan, budaya, dan kehidupan
+                Desa Serindang.
             </p>
+
         </div>
 
-        <div class="card">
-            <span>🏡</span>
-            <h3>Kehidupan Desa</h3>
-            <p>
-                Kehidupan masyarakat yang sederhana,
-                ramah, dan penuh kebersamaan.
-            </p>
+        <div class="copyright">
+            © 2026 Pesona Desa Serindang
         </div>
 
-    </div>
-</section>
-
-<!-- DATA DARI GOOGLE SHEETS -->
-<section class="database">
-    <h2>Data Desa Serindang</h2>
-
-    <div id="data-container" class="cards">
-        <p>Memuat data...</p>
-    </div>
-</section>
-
-<!-- LOKASI DESA -->
-<section class="lokasi">
-
-    <h2>📍 Lokasi Desa Serindang</h2>
-
-    <p>
-        Desa Serindang, Kecamatan Tebas,
-        Kabupaten Sambas, Kalimantan Barat
-    </p>
-
-    <div class="map-container">
-        <iframe
-            src="https://www.google.com/maps?q=Desa%20Serindang,%20Kecamatan%20Tebas,%20Kabupaten%20Sambas,%20Kalimantan%20Barat&output=embed"
-            width="100%"
-            height="400"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-    </div>
-
-    <a
-        href="https://maps.app.goo.gl/imujXkkZ4DhwetDR6"
-        target="_blank"
-        class="map-button">
-        📍 Buka di Google Maps
-    </a>
-
-</section>
+    </footer>
 
 
-<footer>
-    <p>© 2026 Desa Serindang | Website Keindahan Desa</p>
-</footer>
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
+            const links = document.querySelectorAll(".nav-menu a");
+
+            links.forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    links.forEach(function (item) {
+                        item.classList.remove("active");
+                    });
+
+                    this.classList.add("active");
+
+                });
+
+            });
+
+        });
+    </script>
 <script src="script.js"></script>
-
 </body>
 </html>
