@@ -530,3 +530,51 @@ footer {
         gap: 0;
     }
 }
+/* GALERI BERANDA */
+.galeri {
+    padding: 80px 8%;
+    background: #f5faf5;
+}
+
+.gallery-container {
+    max-width: 1100px;
+    margin: 45px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.gallery-item {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+    text-align: center;
+}
+
+.gallery-placeholder {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dcefd7;
+    font-size: 55px;
+}
+
+.gallery-item p {
+    padding: 18px;
+    font-weight: 600;
+    color: #174d32;
+}
+
+@media (max-width: 800px) {
+    .gallery-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+}
