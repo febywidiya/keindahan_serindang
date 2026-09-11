@@ -12,55 +12,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
     galleryImages.forEach(function (image) {
         image.addEventListener("click", function () {
-
             if (this.style.transform === "scale(1.05)") {
                 this.style.transform = "scale(1)";
             } else {
                 this.style.transform = "scale(1.05)";
             }
-
         });
     });
 
 
-    // DATABASE GOOGLE SHEETS
-    const API_URL = "https://script.google.com/macros/s/AKfycbz1q21wg5wWgY_Lsxtu0YyEdJv9Ir2QhBHHl33iZHaQ_i5CuqGYwhRSLQ7qY9h7VRGK3g/exec";
+    // FORM ADUAN
+    const ADUAN_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbzROGv2ZQEvoxUoHd57DLXNNBZoqdY2sZ93XTLyyTkB-FxP0Y6ymRmu1b9IqsqCSKRo2w/exec";
 
-    fetch(API_URL)
-        .then(response => response.json())
-        .then(data => {
+    const aduanForm = document.getElementById("aduanForm");
+    const aduanMessage = document.getElementById("aduanMessage");
 
-            console.log("Data berhasil:", data);
+    if (aduanForm) {
+        aduanForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
 
-            const container = document.getElementById("data-container");
+            const submitButton = aduanForm.querySelector(
+                "button[type='submit']"
+            );
 
-            container.innerHTML = "";
+            submitButton.disabled = true;
+            submitButton.textContent = "Mengirim...";
 
-            data.forEach(function (item) {
+            const formData = new FormData(aduanForm);
 
-                const card = document.createElement("div");
+            try {
+                await fetch(ADUAN_SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    body: new URLSearchParams(formData)
+                });
 
-                card.className = "card";
+                aduanMessage.textContent =
+                    "Aduan berhasil dikirim. Terima kasih sudah menyampaikan laporan.";
 
-                card.innerHTML = `
-                    <span>🌿</span>
-                    <h3>${item.nama}</h3>
-                    <p><strong>${item.kategori}</strong></p>
-                    <p>${item.deskripsi}</p>
-                `;
+                aduanMessage.style.color = "#315b45";
 
-                container.appendChild(card);
+                aduanForm.reset();
 
-            });
+            } catch (error) {
+                aduanMessage.textContent =
+                    "Aduan gagal dikirim. Silakan coba lagi.";
 
-        })
-        .catch(error => {
+                aduanMessage.style.color = "#b33a3a";
 
-            console.error("Gagal mengambil data:", error);
+                console.error("Error:", error);
 
-            document.getElementById("data-container").innerHTML =
-                "<p>Data gagal dimuat.</p>";
-
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = "Kirim Aduan →";
+            }
         });
+    }
 
 });
