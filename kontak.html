@@ -1,76 +1,219 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontak Desa Serindang</title>
+
+    <title>Aduan Desa Serindang</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- ================= NAVBAR ================= -->
+
 <header>
     <nav>
-        <div class="logo">🌿 Desa Serindang</div>
+
+        <div class="logo">
+            🌿 Desa Serindang
+        </div>
 
         <ul>
-            <li><a href="index.html">Beranda</a></li>
-            <li><a href="profil.html">Profil</a></li>
-            <li><a href="keindahan.html">Keindahan</a></li>
-            <li><a href="potensi.html">Potensi</a></li>
-            <li><a href="galeri.html">Galeri</a></li>
-            <li><a href="kontak.html" class="active">Kontak</a></li>
+
+            <li>
+                <a href="index.html">
+                    Beranda
+                </a>
+            </li>
+
+            <li>
+                <a href="profil.html">
+                    Profil
+                </a>
+            </li>
+
+            <li>
+                <a href="keindahan.html">
+                    Keindahan
+                </a>
+            </li>
+
+            <li>
+                <a href="potensi.html">
+                    Potensi
+                </a>
+            </li>
+
+            <li>
+                <a href="galeri.html">
+                    Galeri
+                </a>
+            </li>
+
+            <li>
+                <a href="kontak.html" class="active">
+                    Aduan
+                </a>
+            </li>
+
         </ul>
+
     </nav>
 </header>
 
+
+<!-- ================= JUDUL ================= -->
+
 <section class="page-title">
-    <h1>Kontak & Informasi</h1>
-    <p>Informasi mengenai Desa Serindang</p>
+
+    <h1>
+        Aduan Masyarakat
+    </h1>
+
+    <p>
+        Sampaikan kritik, saran, atau aduan mengenai Desa Serindang.
+    </p>
+
 </section>
+
+
+<!-- ================= ADUAN ================= -->
 
 <section class="contact">
 
+    <!-- INFORMASI -->
+
     <div class="contact-info">
 
-        <h2>Desa Serindang</h2>
+        <h2>
+            Sampaikan Aduan
+        </h2>
 
         <p>
-            📍 Kecamatan Tebas, Kabupaten Sambas,
-            Provinsi Kalimantan Barat
+            Silakan sampaikan kritik, saran, atau aduan
+            untuk membantu meningkatkan pelayanan dan
+            perkembangan Desa Serindang.
         </p>
 
-        <p>📮 Kode Pos: 79461</p>
-
-        <p>📐 Luas Wilayah: 10,02 km²</p>
 
         <div class="official">
-            <h3>Website Resmi Desa</h3>
+
+            <h3>
+                Website Resmi Desa
+            </h3>
 
             <p>
-                Untuk mendapatkan informasi lebih lanjut mengenai
-                Desa Serindang, kamu dapat mengunjungi website
-                resmi Desa Serindang.
+                Untuk mendapatkan informasi lebih lanjut
+                mengenai Desa Serindang, kamu dapat
+                mengunjungi website resmi desa.
             </p>
 
-            <a href="#" class="btn">Website Resmi Desa</a>
+            <a
+                href="https://www.serindang.id/"
+                target="_blank"
+                class="btn">
+
+                Website Resmi Desa
+
+            </a>
+
         </div>
 
     </div>
 
+
+    <!-- FORM ADUAN -->
+
     <div class="contact-form">
 
-        <h2>Kirim Pesan</h2>
+        <h2>
+            Kirim Aduan
+        </h2>
 
-        <form id="contactForm">
+        <form id="aduanForm">
 
-            <input type="text" placeholder="Nama" required>
+            <!-- NAMA -->
 
-            <input type="email" placeholder="serindang417@gmail.com" required>
+            <input
+                type="text"
+                id="nama"
+                name="nama"
+                placeholder="Nama"
+                required>
 
-            <textarea placeholder="Pesan" rows="5" required></textarea>
 
-            <button type="submit">Kirim Pesan</button>
+            <!-- EMAIL -->
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                required>
+
+
+            <!-- KATEGORI -->
+
+            <select
+                id="kategori"
+                name="kategori"
+                required>
+
+                <option value="">
+                    Pilih Kategori
+                </option>
+
+                <option value="Saran">
+                    Saran
+                </option>
+
+                <option value="Kritik">
+                    Kritik
+                </option>
+
+                <option value="Aduan">
+                    Aduan
+                </option>
+
+            </select>
+
+
+            <!-- JUDUL -->
+
+            <input
+                type="text"
+                id="judul"
+                name="judul"
+                placeholder="Judul Aduan"
+                required>
+
+
+            <!-- DESKRIPSI -->
+
+            <textarea
+                id="deskripsi"
+                name="deskripsi"
+                rows="5"
+                placeholder="Tuliskan aduan atau saran..."
+                required></textarea>
+
+
+            <!-- TOMBOL -->
+
+            <button
+                type="submit">
+
+                Kirim Aduan →
+
+            </button>
+
+
+            <!-- PESAN -->
+
+            <p id="aduanMessage"></p>
 
         </form>
 
@@ -78,10 +221,31 @@
 
 </section>
 
+
+<!-- ================= FOOTER ================= -->
+
 <footer>
-    <p>© 2026 Desa Serindang | Website Keindahan Desa</p>
+
+    <div class="footer-content">
+
+        <h3>
+            🌿 Desa Serindang
+        </h3>
+
+        <p>
+            Website Keindahan Desa Serindang
+        </p>
+
+        <p class="copyright">
+            © 2026 Desa Serindang | Website Keindahan Desa
+        </p>
+
+    </div>
+
 </footer>
 
+
 <script src="script.js"></script>
+
 </body>
 </html>
