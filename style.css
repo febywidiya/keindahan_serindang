@@ -44,30 +44,36 @@ nav {
 
 .logo {
     color: white;
-    font-size: 24px;
+    font-size: 23px;
     font-weight: bold;
 }
 
 nav ul {
     list-style: none;
+
     display: flex;
-    gap: 28px;
+    align-items: center;
+    gap: 25px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 15px;
+
+    padding: 8px 0;
+
     transition: 0.3s;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
     color: #b7e4c7;
 }
 
 
 /* =========================
-   HERO
+   HERO / BERANDA
 ========================= */
 
 .hero {
@@ -96,13 +102,19 @@ nav ul li a:hover {
     padding: 20px;
 }
 
+.small-title {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
 .hero-content h1 {
-    font-size: 50px;
+    font-size: 48px;
     margin-bottom: 15px;
 }
 
 .hero-content p {
-    font-size: 19px;
+    font-size: 18px;
     margin-bottom: 25px;
 }
 
@@ -113,10 +125,11 @@ nav ul li a:hover {
 
 .btn {
     display: inline-block;
+
     background: #166534;
     color: white;
 
-    padding: 12px 25px;
+    padding: 11px 24px;
 
     border: none;
     border-radius: 8px;
@@ -125,6 +138,7 @@ nav ul li a:hover {
     cursor: pointer;
 
     font-size: 15px;
+
     transition: 0.3s;
 }
 
@@ -139,7 +153,7 @@ nav ul li a:hover {
 ========================= */
 
 .section {
-    padding: 70px 20px;
+    padding: 65px 20px;
 }
 
 .container {
@@ -149,16 +163,48 @@ nav ul li a:hover {
 
 .section h2 {
     text-align: center;
+
     color: #14532d;
-    font-size: 32px;
-    margin-bottom: 20px;
+    font-size: 30px;
+
+    margin-bottom: 15px;
 }
 
 .section-description {
-    text-align: center;
     max-width: 700px;
+
     margin: 0 auto 35px;
-    color: #555;
+
+    text-align: center;
+
+    color: #666;
+}
+
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.page-title {
+    background: white;
+
+    text-align: center;
+
+    padding: 55px 20px 40px;
+}
+
+.page-title h1 {
+    color: #14532d;
+
+    font-size: 34px;
+
+    margin-bottom: 8px;
+}
+
+.page-title p {
+    color: #666;
+
+    font-size: 16px;
 }
 
 
@@ -168,36 +214,120 @@ nav ul li a:hover {
 
 #profil {
     background: white;
+
+    padding: 65px 20px;
+}
+
+#profil > .container {
+    max-width: 1000px;
 }
 
 #profil > .container > p {
     max-width: 850px;
-    margin: auto;
+
+    margin: 0 auto 30px;
+
     text-align: center;
+
     color: #555;
 }
 
 .info-box {
-    margin-top: 40px;
+    margin-top: 30px;
 
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+
+    gap: 20px;
 }
 
 .info-box > div {
     background: #f1f8f3;
-    padding: 25px;
+
+    padding: 22px;
 
     border-radius: 12px;
+
     text-align: center;
 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
 }
 
 .info-box h3 {
     color: #166534;
-    margin-bottom: 8px;
+
+    margin-bottom: 7px;
+}
+
+
+/* =========================
+   KEINDAHAN
+========================= */
+
+.beauty {
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 50px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+.beauty-card {
+    background: white;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 18px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+}
+
+.beauty-card:hover {
+    transform: translateY(-4px);
+}
+
+.beauty-card img {
+    width: 300px;
+    height: 200px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    flex-shrink: 0;
+}
+
+.beauty-card div {
+    flex: 1;
+}
+
+.beauty-card h2 {
+    color: #14532d;
+
+    font-size: 24px;
+
+    margin-bottom: 10px;
+}
+
+.beauty-card p {
+    color: #666;
+
+    font-size: 15px;
 }
 
 
@@ -207,23 +337,32 @@ nav ul li a:hover {
 
 .potensi-section {
     background: #f5faf7;
+
+    padding: 65px 20px;
 }
 
 .potensi-container {
+    max-width: 1050px;
+
+    margin: auto;
+
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
+
+    gap: 20px;
 }
 
 .potensi-card {
     background: white;
-    padding: 30px 20px;
+
+    padding: 25px 18px;
 
     text-align: center;
 
-    border-radius: 14px;
+    border-radius: 13px;
 
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 
     transition: 0.3s;
 }
@@ -233,17 +372,22 @@ nav ul li a:hover {
 }
 
 .potensi-icon {
-    font-size: 40px;
-    margin-bottom: 15px;
+    font-size: 35px;
+
+    margin-bottom: 10px;
 }
 
 .potensi-card h3 {
     color: #14532d;
-    margin-bottom: 10px;
+
+    font-size: 18px;
+
+    margin-bottom: 8px;
 }
 
 .potensi-card p {
     color: #666;
+
     font-size: 14px;
 }
 
@@ -254,32 +398,42 @@ nav ul li a:hover {
 
 #galeri {
     background: white;
+
+    padding: 65px 20px;
 }
 
 .gallery-container {
+    max-width: 1000px;
+
+    margin: auto;
+
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
 }
 
 .gallery-item {
     background: white;
 
-    border-radius: 15px;
+    border-radius: 12px;
+
     overflow: hidden;
 
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
 
     transition: 0.3s;
 }
 
 .gallery-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 }
 
 .gallery-item img {
     width: 100%;
-    height: 220px;
+
+    height: 180px;
 
     display: block;
 
@@ -287,11 +441,12 @@ nav ul li a:hover {
 }
 
 .gallery-item p {
-    padding: 18px;
+    padding: 13px;
 
     text-align: center;
 
     font-weight: bold;
+
     color: #14532d;
 }
 
@@ -302,22 +457,48 @@ nav ul li a:hover {
 
 .lokasi-section {
     background: #f5faf7;
+
+    padding: 65px 20px;
+}
+
+.lokasi-section h2 {
+    text-align: center;
+
+    color: #14532d;
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
 }
 
 .lokasi-section p {
     text-align: center;
+
+    color: #666;
+
     margin-bottom: 25px;
 }
 
 .map-container {
-    overflow: hidden;
-    border-radius: 15px;
+    max-width: 1000px;
 
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
+    margin: auto;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
 }
 
 .map-container iframe {
+    width: 100%;
+
+    height: 380px;
+
     display: block;
+
+    border: 0;
 }
 
 
@@ -327,44 +508,53 @@ nav ul li a:hover {
 
 .aduan-section {
     background: white;
-    padding: 70px 20px;
+
+    padding: 65px 20px;
 }
 
 .aduan-section h2 {
     text-align: center;
+
     color: #14532d;
-    font-size: 32px;
+
+    font-size: 30px;
+
     margin-bottom: 10px;
 }
 
 .aduan-section > .container > p {
     text-align: center;
+
     color: #666;
+
     margin-bottom: 30px;
 }
 
 .aduan-form {
-    max-width: 700px;
+    max-width: 650px;
+
     margin: auto;
 
     background: #f5faf7;
 
-    padding: 30px;
+    padding: 28px;
 
-    border-radius: 15px;
+    border-radius: 14px;
 
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 17px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 7px;
+
+    margin-bottom: 6px;
 
     font-weight: bold;
+
     color: #14532d;
 }
 
@@ -373,12 +563,14 @@ nav ul li a:hover {
 .form-group textarea {
     width: 100%;
 
-    padding: 12px;
+    padding: 11px;
 
     border: 1px solid #ccc;
+
     border-radius: 8px;
 
     font-family: Arial, sans-serif;
+
     font-size: 14px;
 
     background: white;
@@ -392,6 +584,7 @@ nav ul li a:hover {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
+
     border-color: #166534;
 }
 
@@ -401,7 +594,9 @@ nav ul li a:hover {
 
 #aduanMessage {
     text-align: center;
+
     margin-top: 15px;
+
     font-weight: bold;
 }
 
@@ -412,6 +607,7 @@ nav ul li a:hover {
 
 footer {
     background: #14532d;
+
     color: white;
 
     text-align: center;
@@ -419,9 +615,23 @@ footer {
     padding: 25px 15px;
 }
 
+.footer-content h3 {
+    margin-bottom: 5px;
+}
+
+.footer-content p {
+    margin-bottom: 5px;
+}
+
+.copyright {
+    font-size: 13px;
+
+    margin-top: 10px;
+}
+
 
 /* =========================
-   RESPONSIVE
+   TABLET
 ========================= */
 
 @media (max-width: 900px) {
@@ -437,20 +647,34 @@ footer {
     .gallery-container {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .beauty-card img {
+        width: 260px;
+        height: 180px;
+    }
 }
 
+
+/* =========================
+   HP
+========================= */
 
 @media (max-width: 600px) {
 
     nav {
         flex-direction: column;
+
         padding: 15px;
-        gap: 15px;
+
+        gap: 12px;
     }
 
     nav ul {
         flex-wrap: wrap;
+
         justify-content: center;
+
+        gap: 12px;
     }
 
     .hero {
@@ -465,15 +689,71 @@ footer {
         font-size: 16px;
     }
 
+    .page-title {
+        padding: 40px 15px 30px;
+    }
+
+    .page-title h1 {
+        font-size: 28px;
+    }
+
     .info-box {
         grid-template-columns: 1fr;
     }
 
-    .potensi-container {
-        grid-template-columns: 1fr;
+    /* Keindahan */
+
+    .beauty {
+        padding: 35px 15px;
     }
 
+    .beauty-card {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 15px;
+    }
+
+    .beauty-card img {
+        width: 100%;
+
+        height: 200px;
+    }
+
+    .beauty-card h2 {
+        font-size: 21px;
+    }
+
+    /* Potensi */
+
+    .potensi-container {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 15px;
+    }
+
+    /* Galeri */
+
     .gallery-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 15px;
+    }
+
+    .gallery-item img {
+        height: 140px;
+    }
+
+    /* Lokasi */
+
+    .map-container iframe {
+        height: 300px;
+    }
+
+    /* Aduan */
+
+    .aduan-form {
+        padding: 20px;
     }
 }
