@@ -4,214 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Aduan Desa Serindang</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
-
 <header>
     <nav>
-
-        <div class="logo">
-            🌿 Desa Serindang
-        </div>
+        <div class="logo">🌿 Desa Serindang</div>
 
         <ul>
-
-            <li>
-                <a href="index.html">
-                    Beranda
-                </a>
-            </li>
-
-            <li>
-                <a href="profil.html">
-                    Profil
-                </a>
-            </li>
-
-            <li>
-                <a href="keindahan.html">
-                    Keindahan
-                </a>
-            </li>
-
-            <li>
-                <a href="potensi.html">
-                    Potensi
-                </a>
-            </li>
-
-            <li>
-                <a href="galeri.html">
-                    Galeri
-                </a>
-            </li>
-
-            <li>
-                <a href="kontak.html" class="active">
-                    Aduan
-                </a>
-            </li>
-
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="profil.html">Profil</a></li>
+            <li><a href="keindahan.html">Keindahan</a></li>
+            <li><a href="potensi.html">Potensi</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="kontak.html" class="active">Aduan</a></li>
         </ul>
-
     </nav>
 </header>
 
 
-<!-- ================= JUDUL ================= -->
+<!-- =========================
+     ADUAN
+========================= -->
 
-<section class="page-title">
+<section class="aduan-section">
 
-    <h1>
-        Aduan Masyarakat
-    </h1>
+    <div class="container">
 
-    <p>
-        Sampaikan kritik, saran, atau aduan mengenai Desa Serindang.
-    </p>
-
-</section>
-
-
-<!-- ================= ADUAN ================= -->
-
-<section class="contact">
-
-    <!-- INFORMASI -->
-
-    <div class="contact-info">
-
-        <h2>
-            Sampaikan Aduan
-        </h2>
+        <h2>Aduan Masyarakat</h2>
 
         <p>
-            Silakan sampaikan kritik, saran, atau aduan
-            untuk membantu meningkatkan pelayanan dan
-            perkembangan Desa Serindang.
+            Sampaikan kritik, saran, atau aduan mengenai Desa Serindang.
         </p>
 
 
-        <div class="official">
+        <form id="aduanForm" class="aduan-form">
 
-            <h3>
-                Website Resmi Desa
-            </h3>
-
-            <p>
-                Untuk mendapatkan informasi lebih lanjut
-                mengenai Desa Serindang, kamu dapat
-                mengunjungi website resmi desa.
-            </p>
-
-            <a
-                href="https://www.serindang.id/"
-                target="_blank"
-                class="btn">
-
-                Website Resmi Desa
-
-            </a>
-
-        </div>
-
-    </div>
+            <div class="form-group">
+                <label for="nama">Nama</label>
+                <input
+                    type="text"
+                    id="nama"
+                    name="nama"
+                    placeholder="Masukkan nama"
+                    required>
+            </div>
 
 
-    <!-- FORM ADUAN -->
-
-    <div class="contact-form">
-
-        <h2>
-            Kirim Aduan
-        </h2>
-
-        <form id="aduanForm">
-
-            <!-- NAMA -->
-
-            <input
-                type="text"
-                id="nama"
-                name="nama"
-                placeholder="Nama"
-                required>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Masukkan email"
+                    required>
+            </div>
 
 
-            <!-- EMAIL -->
+            <div class="form-group">
+                <label for="kategori">Kategori</label>
 
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email"
-                required>
+                <select
+                    id="kategori"
+                    name="kategori"
+                    required>
 
+                    <option value="">Pilih Kategori</option>
+                    <option value="Saran">Saran</option>
+                    <option value="Kritik">Kritik</option>
+                    <option value="Aduan">Aduan</option>
 
-            <!-- KATEGORI -->
-
-            <select
-                id="kategori"
-                name="kategori"
-                required>
-
-                <option value="">
-                    Pilih Kategori
-                </option>
-
-                <option value="Saran">
-                    Saran
-                </option>
-
-                <option value="Kritik">
-                    Kritik
-                </option>
-
-                <option value="Aduan">
-                    Aduan
-                </option>
-
-            </select>
+                </select>
+            </div>
 
 
-            <!-- JUDUL -->
+            <div class="form-group">
+                <label for="judul">Judul Aduan</label>
 
-            <input
-                type="text"
-                id="judul"
-                name="judul"
-                placeholder="Judul Aduan"
-                required>
-
-
-            <!-- DESKRIPSI -->
-
-            <textarea
-                id="deskripsi"
-                name="deskripsi"
-                rows="5"
-                placeholder="Tuliskan aduan atau saran..."
-                required></textarea>
+                <input
+                    type="text"
+                    id="judul"
+                    name="judul"
+                    placeholder="Masukkan judul aduan"
+                    required>
+            </div>
 
 
-            <!-- TOMBOL -->
+            <div class="form-group">
+                <label for="deskripsi">Isi Aduan</label>
 
-            <button
-                type="submit">
+                <textarea
+                    id="deskripsi"
+                    name="deskripsi"
+                    rows="6"
+                    placeholder="Tuliskan aduan, kritik, atau saran..."
+                    required></textarea>
+            </div>
 
+
+            <button type="submit" class="btn">
                 Kirim Aduan →
-
             </button>
-
-
-            <!-- PESAN -->
 
             <p id="aduanMessage"></p>
 
@@ -222,26 +119,8 @@
 </section>
 
 
-<!-- ================= FOOTER ================= -->
-
 <footer>
-
-    <div class="footer-content">
-
-        <h3>
-            🌿 Desa Serindang
-        </h3>
-
-        <p>
-            Website Keindahan Desa Serindang
-        </p>
-
-        <p class="copyright">
-            © 2026 Desa Serindang | Website Keindahan Desa
-        </p>
-
-    </div>
-
+    <p>© 2026 Desa Serindang | Website Keindahan Desa</p>
 </footer>
 
 
