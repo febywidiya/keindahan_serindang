@@ -4,15 +4,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // TOMBOL JELAJAHI DESA
     // ===============================
 
-    const exploreButton = document.querySelector(".hero .btn");
+    const exploreButton =
+        document.querySelector(".hero .btn");
 
     if (exploreButton) {
 
-        exploreButton.addEventListener("click", function () {
+        exploreButton.addEventListener(
+            "click",
+            function () {
 
-            console.log("Selamat datang di Desa Serindang!");
+                console.log(
+                    "Selamat datang di Desa Serindang!"
+                );
 
-        });
+            }
+        );
 
     }
 
@@ -22,25 +28,35 @@ document.addEventListener("DOMContentLoaded", function () {
     // ===============================
 
     const galleryImages =
-        document.querySelectorAll(".gallery-item img");
+        document.querySelectorAll(
+            ".gallery-item img"
+        );
 
     galleryImages.forEach(function (image) {
 
         image.style.cursor = "pointer";
 
-        image.addEventListener("click", function () {
+        image.addEventListener(
+            "click",
+            function () {
 
-            if (this.style.transform === "scale(1.05)") {
+                if (
+                    this.style.transform ===
+                    "scale(1.05)"
+                ) {
 
-                this.style.transform = "scale(1)";
+                    this.style.transform =
+                        "scale(1)";
 
-            } else {
+                } else {
 
-                this.style.transform = "scale(1.05)";
+                    this.style.transform =
+                        "scale(1.05)";
+
+                }
 
             }
-
-        });
+        );
 
     });
 
@@ -55,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const aduanForm =
         document.getElementById("aduanForm");
+
 
     const aduanMessage =
         document.getElementById("aduanMessage");
@@ -104,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     aduanMessage.textContent =
                         "Aduan berhasil dikirim. Terima kasih sudah menyampaikan laporan.";
 
+
                     aduanMessage.style.color =
                         "#315b45";
 
@@ -116,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     aduanMessage.textContent =
                         "Aduan gagal dikirim. Silakan coba lagi.";
 
+
                     aduanMessage.style.color =
                         "#b33a3a";
 
@@ -125,11 +144,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         error
                     );
 
-
                 } finally {
 
                     submitButton.disabled =
                         false;
+
 
                     submitButton.textContent =
                         "Kirim Aduan →";
