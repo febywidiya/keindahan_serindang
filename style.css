@@ -33,8 +33,8 @@ header {
 
 nav {
     max-width: 1100px;
-    min-height: 70px;
     margin: auto;
+    min-height: 70px;
     padding: 0 20px;
 
     display: flex;
@@ -58,7 +58,6 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 15px;
-    padding: 8px 0;
     transition: 0.3s;
 }
 
@@ -69,7 +68,7 @@ nav ul li a.active {
 
 
 /* =========================
-   BERANDA / HERO
+   HERO / BERANDA
 ========================= */
 
 .hero {
@@ -93,9 +92,9 @@ nav ul li a.active {
 }
 
 .hero-content {
+    color: white;
     max-width: 700px;
     padding: 20px;
-    color: white;
 }
 
 .small-title {
@@ -111,7 +110,7 @@ nav ul li a.active {
 }
 
 .hero-content p {
-    font-size: 18px;
+    font-size: 19px;
     margin-bottom: 25px;
 }
 
@@ -135,7 +134,6 @@ nav ul li a.active {
     cursor: pointer;
 
     font-size: 15px;
-
     transition: 0.3s;
 }
 
@@ -173,6 +171,8 @@ nav ul li a.active {
 
 /* =========================
    PROFIL
+   GAMBAR DI KIRI
+   TULISAN DI KANAN
 ========================= */
 
 .profile {
@@ -182,29 +182,40 @@ nav ul li a.active {
 
     padding: 0 20px;
 
-    display: grid;
-    grid-template-columns: 420px 1fr;
-
-    gap: 50px;
+    display: flex;
 
     align-items: center;
+
+    gap: 45px;
+}
+
+.profile-image {
+    width: 400px;
+
+    flex-shrink: 0;
 }
 
 .profile-image img {
     width: 100%;
-    height: 330px;
+    height: 300px;
 
     object-fit: cover;
 
     display: block;
 
-    border-radius: 15px;
+    border-radius: 14px;
 
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.10);
+}
+
+.profile-text {
+    flex: 1;
 }
 
 .profile-text h2 {
     color: #14532d;
+
     font-size: 30px;
 
     margin-bottom: 15px;
@@ -212,42 +223,47 @@ nav ul li a.active {
 
 .profile-text p {
     color: #555;
-    margin-bottom: 15px;
+
+    margin-bottom: 12px;
 }
 
 .info {
-    margin-top: 25px;
+    margin-top: 20px;
 
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
 
-    gap: 12px;
+    gap: 10px;
 }
 
 .info div {
     background: #eef7f0;
 
-    padding: 13px 15px;
+    padding: 12px 15px;
 
-    border-radius: 9px;
-
-    display: flex;
-    flex-direction: column;
+    border-radius: 8px;
 }
 
 .info strong {
+    display: block;
+
     color: #14532d;
+
     font-size: 14px;
 }
 
 .info span {
     color: #666;
+
     font-size: 14px;
 }
 
 
 /* =========================
    KEINDAHAN
+   GAMBAR DI KIRI
+   TULISAN DI KANAN
 ========================= */
 
 .beauty {
@@ -258,6 +274,7 @@ nav ul li a.active {
     padding: 0 20px;
 
     display: flex;
+
     flex-direction: column;
 
     gap: 25px;
@@ -267,6 +284,7 @@ nav ul li a.active {
     background: white;
 
     display: grid;
+
     grid-template-columns: 280px 1fr;
 
     align-items: center;
@@ -277,7 +295,8 @@ nav ul li a.active {
 
     border-radius: 14px;
 
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.08);
 
     transition: 0.3s;
 }
@@ -299,6 +318,7 @@ nav ul li a.active {
 
 .beauty-card h2 {
     color: #14532d;
+
     font-size: 24px;
 
     margin-bottom: 10px;
@@ -306,6 +326,7 @@ nav ul li a.active {
 
 .beauty-card p {
     color: #666;
+
     font-size: 15px;
 }
 
@@ -317,11 +338,12 @@ nav ul li a.active {
 .potential {
     max-width: 1050px;
 
-    margin: 60px auto;
+    margin: 55px auto;
 
     padding: 0 20px;
 
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
 
     gap: 20px;
@@ -330,33 +352,34 @@ nav ul li a.active {
 .potential-card {
     background: white;
 
-    padding: 30px 20px;
+    padding: 25px 18px;
 
     text-align: center;
 
-    border-radius: 14px;
+    border-radius: 12px;
 
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.08);
 
     transition: 0.3s;
 }
 
 .potential-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 }
 
 .potential-card .icon {
-    font-size: 38px;
+    font-size: 35px;
 
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .potential-card h2 {
     color: #14532d;
 
-    font-size: 21px;
+    font-size: 20px;
 
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .potential-card p {
@@ -364,6 +387,11 @@ nav ul li a.active {
 
     font-size: 14px;
 }
+
+
+/* =========================
+   QUOTE
+========================= */
 
 .quote {
     max-width: 900px;
@@ -392,12 +420,13 @@ nav ul li a.active {
 
 /* =========================
    GALERI
+   FOTO LEBIH KECIL
 ========================= */
 
 .gallery {
     max-width: 1000px;
 
-    margin: 60px auto;
+    margin: 55px auto;
 
     padding: 0 20px;
 
@@ -405,7 +434,7 @@ nav ul li a.active {
 
     grid-template-columns: repeat(3, 1fr);
 
-    gap: 22px;
+    gap: 20px;
 }
 
 .gallery-item {
@@ -415,7 +444,8 @@ nav ul li a.active {
 
     overflow: hidden;
 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.08);
 
     transition: 0.3s;
 }
@@ -426,21 +456,22 @@ nav ul li a.active {
 
 .gallery-item img {
     width: 100%;
-    height: 180px;
 
-    display: block;
+    height: 170px;
 
     object-fit: cover;
+
+    display: block;
 }
 
 .gallery-item h3 {
     color: #14532d;
 
-    font-size: 16px;
-
     text-align: center;
 
-    padding: 14px 10px;
+    font-size: 15px;
+
+    padding: 13px 8px;
 }
 
 
@@ -481,7 +512,8 @@ nav ul li a.active {
 
     border-radius: 14px;
 
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.10);
 }
 
 .map-container iframe {
@@ -530,7 +562,8 @@ nav ul li a.active {
 
     border-radius: 14px;
 
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.08);
 }
 
 .form-group {
@@ -612,7 +645,7 @@ footer p {
 
 
 /* =========================
-   RESPONSIVE
+   TABLET
 ========================= */
 
 @media (max-width: 900px) {
@@ -622,8 +655,11 @@ footer p {
     }
 
     .profile {
-        grid-template-columns: 350px 1fr;
         gap: 30px;
+    }
+
+    .profile-image {
+        width: 350px;
     }
 
     .potential {
@@ -636,7 +672,11 @@ footer p {
 }
 
 
-@media (max-width: 650px) {
+/* =========================
+   HP
+========================= */
+
+@media (max-width: 700px) {
 
     nav {
         flex-direction: column;
@@ -658,6 +698,9 @@ footer p {
         font-size: 21px;
     }
 
+
+    /* HERO */
+
     .hero {
         min-height: 400px;
     }
@@ -670,6 +713,9 @@ footer p {
         font-size: 16px;
     }
 
+
+    /* JUDUL */
+
     .page-title {
         padding: 40px 15px;
     }
@@ -678,15 +724,25 @@ footer p {
         font-size: 29px;
     }
 
-    /* Profil */
+
+    /* PROFIL */
+
     .profile {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 25px;
 
         margin: 40px auto;
     }
 
+    .profile-image {
+        width: 100%;
+    }
+
     .profile-image img {
-        height: 240px;
+        height: 250px;
     }
 
     .profile-text h2 {
@@ -697,7 +753,9 @@ footer p {
         grid-template-columns: 1fr;
     }
 
-    /* Keindahan */
+
+    /* KEINDAHAN */
+
     .beauty {
         margin: 40px auto;
     }
@@ -710,28 +768,52 @@ footer p {
 
     .beauty-card img {
         width: 100%;
+
         height: 200px;
     }
 
-    /* Potensi */
+
+    /* POTENSI */
+
     .potential {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
 
         margin: 40px auto;
     }
 
-    /* Galeri */
+
+    /* GALERI */
+
     .gallery {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
 
         margin: 40px auto;
     }
 
     .gallery-item img {
-        height: 200px;
+        height: 180px;
     }
+
+
+    /* QUOTE */
 
     .quote {
         margin: 0 20px 40px;
+    }
+}
+
+
+/* =========================
+   HP KECIL
+========================= */
+
+@media (max-width: 500px) {
+
+    .potential {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
     }
 }
