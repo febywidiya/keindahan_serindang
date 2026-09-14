@@ -27,6 +27,7 @@
         }
 
         .admin-header h1 {
+            color: #075b2d;
             margin-bottom: 10px;
         }
 
@@ -34,22 +35,24 @@
             background: white;
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             margin-bottom: 25px;
         }
 
         .admin-card h2 {
             margin-bottom: 20px;
+            color: #075b2d;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 7px;
+            margin-bottom: 8px;
             font-weight: bold;
+            color: #075b2d;
         }
 
         .form-group input,
@@ -57,13 +60,15 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid #ccc;
             border-radius: 7px;
             font-family: inherit;
+            font-size: 14px;
+            box-sizing: border-box;
         }
 
         .form-group textarea {
-            min-height: 100px;
+            height: 120px;
             resize: vertical;
         }
 
@@ -73,11 +78,10 @@
             border-radius: 7px;
             cursor: pointer;
             font-size: 14px;
-            margin-right: 5px;
         }
 
         .btn-tambah {
-            background: #315c3a;
+            background: #28613b;
             color: white;
         }
 
@@ -108,15 +112,8 @@
         }
 
         table th {
-            background: #315c3a;
+            background: #28613b;
             color: white;
-        }
-
-        .data-image {
-            width: 80px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 6px;
         }
     </style>
 </head>
@@ -133,33 +130,49 @@
         </div>
 
         <ul>
+
             <li>
-                <a href="index.html">Beranda</a>
+                <a href="index.html">
+                    Beranda
+                </a>
             </li>
 
             <li>
-                <a href="profil.html">Profil</a>
+                <a href="profil.html">
+                    Profil
+                </a>
             </li>
 
             <li>
-                <a href="keindahan.html">Keindahan</a>
+                <a href="keindahan.html">
+                    Keindahan
+                </a>
             </li>
 
             <li>
-                <a href="potensi.html">Potensi</a>
+                <a href="potensi.html">
+                    Potensi
+                </a>
             </li>
 
             <li>
-                <a href="galeri.html">Galeri</a>
+                <a href="galeri.html">
+                    Galeri
+                </a>
             </li>
 
             <li>
-                <a href="kontak.html">Aduan</a>
+                <a href="kontak.html">
+                    Aduan
+                </a>
             </li>
 
             <li>
-                <a href="admin.html" class="active">Admin</a>
+                <a href="admin.html" class="active">
+                    Admin
+                </a>
             </li>
+
         </ul>
 
     </nav>
@@ -177,13 +190,13 @@
             <h1>Admin Desa Serindang</h1>
 
             <p>
-                Kelola data Keindahan, Potensi, dan Galeri Desa Serindang.
+                Kelola data Desa Serindang dengan mudah.
             </p>
 
         </div>
 
 
-        <!-- FORM -->
+        <!-- FORM TAMBAH DATA -->
 
         <div class="admin-card">
 
@@ -193,7 +206,9 @@
 
                 <div class="form-group">
 
-                    <label>ID</label>
+                    <label for="id">
+                        ID
+                    </label>
 
                     <input
                         type="number"
@@ -206,7 +221,9 @@
 
                 <div class="form-group">
 
-                    <label>Nama</label>
+                    <label for="nama">
+                        Nama
+                    </label>
 
                     <input
                         type="text"
@@ -219,12 +236,14 @@
 
                 <div class="form-group">
 
-                    <label>Kategori</label>
+                    <label for="kategori">
+                        Kategori
+                    </label>
 
                     <select id="kategori" required>
 
                         <option value="">
-                            -- Pilih Kategori --
+                            Pilih Kategori
                         </option>
 
                         <option value="Keindahan">
@@ -246,24 +265,14 @@
 
                 <div class="form-group">
 
-                    <label>Deskripsi</label>
+                    <label for="deskripsi">
+                        Deskripsi
+                    </label>
 
                     <textarea
                         id="deskripsi"
                         placeholder="Masukkan deskripsi"
                         required></textarea>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>Link Gambar</label>
-
-                    <input
-                        type="url"
-                        id="gambar"
-                        placeholder="Masukkan link gambar">
 
                 </div>
 
@@ -294,14 +303,11 @@
                     <thead>
 
                         <tr>
-
                             <th>ID</th>
                             <th>Nama</th>
                             <th>Kategori</th>
                             <th>Deskripsi</th>
-                            <th>Gambar</th>
                             <th>Aksi</th>
-
                         </tr>
 
                     </thead>
@@ -310,7 +316,7 @@
 
                         <tr>
 
-                            <td colspan="6" style="text-align:center;">
+                            <td colspan="5" style="text-align:center;">
                                 Memuat data...
                             </td>
 
