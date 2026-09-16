@@ -1,8 +1,41 @@
-const API_URL = "MASUKKAN_URL_APPS_SCRIPT_KAMU";
+// ==========================================
+// URL GOOGLE APPS SCRIPT
+// ==========================================
+
+const API_URL = "https://script.google.com/macros/s/AKfycbyxixXPgm970xPYDTOuExKGCa5gfER8zlf8Nu1Wr40A1FdpWocxXQnSdf0PBg-U7V4N/exec";
+
+
+// ==========================================
+// ELEMENT HTML
+// ==========================================
 
 const dataTable = document.getElementById("dataTable");
+const aduanTable = document.getElementById("aduanTable");
+
+const dataForm = document.getElementById("dataForm");
+const submitBtn = document.getElementById("submitBtn");
+const cancelBtn = document.getElementById("cancelBtn");
+const formTitle = document.getElementById("formTitle");
+const dataStatus = document.getElementById("dataStatus");
+
+
+// Menyimpan status apakah sedang edit
+let sedangEdit = false;
+
+
+// ==========================================
+// LOAD DATA DARI GOOGLE SHEETS
+// ==========================================
 
 async function loadData() {
+
+    dataTable.innerHTML = `
+        <tr>
+            <td colspan="6" style="text-align:center;">
+                Memuat data...
+            </td>
+        </tr>
+    `;
 
     try {
 
@@ -12,42 +45,71 @@ async function loadData() {
 
         dataTable.innerHTML = "";
 
+        if (!Array.isArray(data) || data.length === 0) {
+
+            dataTable.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align:center;">
+                        Belum ada data.
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
         data.forEach(item => {
 
             const row = document.createElement("tr");
 
             row.innerHTML = `
-                <td>${item.id}</td>
 
-                <td>${item.nama}</td>
+                <td>${item.id || ""}</td>
 
-                <td>${item.kategori}</td>
+                <td>${item.nama || ""}</td>
 
-                <td>${item.deskripsi}</td>
+                <td>${item.kategori || ""}</td>
+
+                <td>${item.deskripsi || ""}</td>
 
                 <td>
+
                     ${
                         item.gambar
-                        ? `<img src="${item.gambar}" class="data-image">`
-                        : "-"
+                        ?
+                        `<img
+                            src="${item.gambar}"
+                            class="gambar-preview"
+                            onerror="this.style.display='none'">
+                        `
+                        :
+                        "-"
                     }
+
                 </td>
 
-                <td>
+                <td class="aksi">
 
                     <button
                         class="admin-btn btn-edit"
-                        onclick="editData(${item.id})">
+                        onclick="editData('${item.id}')">
+
                         Edit
+
                     </button>
+
 
                     <button
                         class="admin-btn btn-hapus"
-                        onclick="hapusData(${item.id})">
+                        onclick="hapusData('${item.id}')">
+
                         Hapus
+
                     </button>
 
                 </td>
+
             `;
 
             dataTable.appendChild(row);
@@ -56,73 +118,417 @@ async function loadData() {
 
     } catch (error) {
 
-        console.error(error);
+        console.error("Error:", error);
 
         dataTable.innerHTML = `
             <tr>
                 <td colspan="6" style="text-align:center;">
-                    Gagal mengambil data.
+                    Gagal mengambil data dari Google Sheets.
                 </td>
             </tr>
         `;
+    }
+}
+
+
+// ==========================================
+// TAMBAH DATA
+// ==========================================
+
+dataForm.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+
+    const data = {
+
+        tabel: "Data",
+
+        action: sedangEdit ? "edit" : "tambah",
+
+        id: document.getElementById("id").value,
+
+        nama: document.getElementById("nama").value,
+
+        kategori: document.getElementById("kategori").value,
+
+        deskripsi: document.getElementById("deskripsi").value,
+
+        gambar: document.getElementById("gambar").value
+
+    };
+
+
+    submitBtn.disabled = true;
+
+    submitBtn.textContent = "Menyimpan...";
+
+
+    try {
+
+        await fetch(API_URL, {
+
+            method: "POST",
+
+            mode: "no-cors",
+
+            body: JSON.stringify(data)
+
+        });
+
+
+        if (sedangEdit) {
+
+            alert("Data berhasil diubah!");
+
+        } else {
+
+            alert("Data berhasil ditambahkan!");
+
+        }
+
+
+        resetForm();
+
+        loadData();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Terjadi kesalahan saat menyimpan data.");
 
     }
 
-}
+
+    submitBtn.disabled = false;
+
+});
 
 
-document
-    .getElementById("dataForm")
-    .addEventListener("submit", function(e) {
+// ==========================================
+// EDIT DATA
+// ==========================================
 
-        e.preventDefault();
+async function editData(id) {
 
-        const data = {
+    try {
 
-            id: document.getElementById("id").value,
+        const response = await fetch(API_URL);
 
-            nama: document.getElementById("nama").value,
-
-            kategori: document.getElementById("kategori").value,
-
-            deskripsi: document.getElementById("deskripsi").value,
-
-            gambar: document.getElementById("gambar").value
-
-        };
-
-        console.log(data);
-
-        alert("Data berhasil disiapkan!");
-
-        this.reset();
-
-    });
+        const data = await response.json();
 
 
-function editData(id) {
-
-    alert("Fitur edit untuk ID " + id + " akan dihubungkan ke Google Sheets.");
-
-}
-
-
-function hapusData(id) {
-
-    const yakin = confirm(
-        "Apakah kamu yakin ingin menghapus data ID " + id + "?"
-    );
-
-    if (yakin) {
-
-        alert(
-            "Fitur hapus untuk ID " + id +
-            " akan dihubungkan ke Google Sheets."
+        const item = data.find(
+            x => String(x.id) === String(id)
         );
 
+
+        if (!item) {
+
+            alert("Data tidak ditemukan.");
+
+            return;
+
+        }
+
+
+        document.getElementById("id").value =
+            item.id || "";
+
+        document.getElementById("nama").value =
+            item.nama || "";
+
+        document.getElementById("kategori").value =
+            item.kategori || "";
+
+        document.getElementById("deskripsi").value =
+            item.deskripsi || "";
+
+        document.getElementById("gambar").value =
+            item.gambar || "";
+
+
+        sedangEdit = true;
+
+
+        formTitle.textContent = "Edit Data";
+
+        submitBtn.textContent = "💾 Simpan Perubahan";
+
+        submitBtn.classList.remove("btn-tambah");
+
+        submitBtn.classList.add("btn-edit");
+
+
+        cancelBtn.style.display = "inline-block";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Gagal mengambil data.");
+
     }
+}
+
+
+// ==========================================
+// HAPUS DATA
+// ==========================================
+
+async function hapusData(id) {
+
+    const yakin = confirm(
+        "Apakah kamu yakin ingin menghapus data ID " +
+        id +
+        "?"
+    );
+
+
+    if (!yakin) {
+        return;
+    }
+
+
+    try {
+
+        await fetch(API_URL, {
+
+            method: "POST",
+
+            mode: "no-cors",
+
+            body: JSON.stringify({
+
+                tabel: "Data",
+
+                action: "hapus",
+
+                id: id
+
+            })
+
+        });
+
+
+        alert("Data berhasil dihapus!");
+
+        loadData();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Gagal menghapus data.");
+
+    }
+}
+
+
+// ==========================================
+// BATAL EDIT
+// ==========================================
+
+cancelBtn.addEventListener("click", function() {
+
+    resetForm();
+
+});
+
+
+// ==========================================
+// RESET FORM
+// ==========================================
+
+function resetForm() {
+
+    dataForm.reset();
+
+
+    sedangEdit = false;
+
+
+    formTitle.textContent = "Tambah Data";
+
+
+    submitBtn.textContent = "+ Tambah Data";
+
+    submitBtn.classList.remove("btn-edit");
+
+    submitBtn.classList.add("btn-tambah");
+
+
+    cancelBtn.style.display = "none";
+
+
+    dataStatus.textContent = "";
 
 }
 
 
+// ==========================================
+// LOAD ADUAN
+// ==========================================
+
+async function loadAduan() {
+
+    aduanTable.innerHTML = `
+        <tr>
+            <td colspan="6" style="text-align:center;">
+                Memuat aduan...
+            </td>
+        </tr>
+    `;
+
+
+    try {
+
+        const response = await fetch(
+            API_URL + "?sheet=Aduan"
+        );
+
+
+        const data = await response.json();
+
+
+        aduanTable.innerHTML = "";
+
+
+        if (!Array.isArray(data) || data.length === 0) {
+
+            aduanTable.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align:center;">
+                        Belum ada aduan.
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
+        data.forEach(item => {
+
+            const row = document.createElement("tr");
+
+
+            row.innerHTML = `
+
+                <td>${item.id || ""}</td>
+
+                <td>${item.nama || ""}</td>
+
+                <td>${item.email || ""}</td>
+
+                <td>${item.aduan || ""}</td>
+
+                <td>${item.tanggal || ""}</td>
+
+                <td>
+
+                    <button
+                        class="admin-btn btn-hapus"
+                        onclick="hapusAduan('${item.id}')">
+
+                        Hapus
+
+                    </button>
+
+                </td>
+
+            `;
+
+
+            aduanTable.appendChild(row);
+
+        });
+
+
+    } catch (error) {
+
+        console.error("Error:", error);
+
+
+        aduanTable.innerHTML = `
+            <tr>
+                <td colspan="6" style="text-align:center;">
+                    Gagal mengambil data aduan.
+                </td>
+            </tr>
+        `;
+    }
+}
+
+
+// ==========================================
+// HAPUS ADUAN
+// ==========================================
+
+async function hapusAduan(id) {
+
+    const yakin = confirm(
+        "Apakah kamu yakin ingin menghapus aduan ID " +
+        id +
+        "?"
+    );
+
+
+    if (!yakin) {
+        return;
+    }
+
+
+    try {
+
+        await fetch(API_URL, {
+
+            method: "POST",
+
+            mode: "no-cors",
+
+            body: JSON.stringify({
+
+                tabel: "Aduan",
+
+                action: "hapus",
+
+                id: id
+
+            })
+
+        });
+
+
+        alert("Aduan berhasil dihapus!");
+
+
+        loadAduan();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Gagal menghapus aduan.");
+
+    }
+}
+
+
+// ==========================================
+// JALANKAN SAAT HALAMAN DIBUKA
+// ==========================================
+
 loadData();
+
+loadAduan();
