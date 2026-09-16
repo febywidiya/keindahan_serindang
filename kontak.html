@@ -25,7 +25,6 @@
     </nav>
 </header>
 
-
 <section class="aduan-section">
 
     <div class="container">
@@ -40,7 +39,6 @@
 
             <div class="form-group">
                 <label for="nama">Nama</label>
-
                 <input
                     type="text"
                     id="nama"
@@ -49,10 +47,8 @@
                     required>
             </div>
 
-
             <div class="form-group">
                 <label for="email">Email</label>
-
                 <input
                     type="email"
                     id="email"
@@ -61,23 +57,16 @@
                     required>
             </div>
 
-
             <div class="form-group">
                 <label for="kategori">Kategori</label>
 
-                <select
-                    id="kategori"
-                    name="kategori"
-                    required>
-
+                <select id="kategori" name="kategori" required>
                     <option value="">Pilih Kategori</option>
                     <option value="Saran">Saran</option>
                     <option value="Kritik">Kritik</option>
                     <option value="Aduan">Aduan</option>
-
                 </select>
             </div>
-
 
             <div class="form-group">
                 <label for="judul">Judul Aduan</label>
@@ -90,7 +79,6 @@
                     required>
             </div>
 
-
             <div class="form-group">
                 <label for="deskripsi">Isi Aduan</label>
 
@@ -102,16 +90,9 @@
                     required></textarea>
             </div>
 
-
-            <button
-                type="submit"
-                class="btn"
-                id="btnAduan">
-
+            <button type="submit" class="btn" id="btnAduan">
                 Kirim Aduan →
-
             </button>
-
 
             <p id="aduanMessage"></p>
 
@@ -121,13 +102,64 @@
 
 </section>
 
-
 <footer>
     <p>© 2026 Desa Serindang | Website Keindahan Desa</p>
 </footer>
 
 
-<script src="script.js"></script>
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbyxixXPgm970xPYDTOuExKGCa5gfER8zlf8Nu1Wr40A1FdpWocxXQnSdf0PBg-U7V4N/exec";
+
+document.getElementById("aduanForm").addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const tombol = document.getElementById("btnAduan");
+    const pesan = document.getElementById("aduanMessage");
+
+    tombol.disabled = true;
+    tombol.textContent = "Mengirim...";
+
+    const data = {
+        tabel: "Aduan",
+        action: "tambah",
+        id: Date.now().toString(),
+        nama: document.getElementById("nama").value,
+        email: document.getElementById("email").value,
+        aduan:
+            "Kategori: " + document.getElementById("kategori").value +
+            " | Judul: " + document.getElementById("judul").value +
+            " | Isi: " + document.getElementById("deskripsi").value,
+        tanggal: new Date().toLocaleString("id-ID")
+    };
+
+    try {
+
+        await fetch(API_URL, {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify(data)
+        });
+
+        pesan.textContent = "Aduan berhasil dikirim!";
+        pesan.style.color = "green";
+
+        document.getElementById("aduanForm").reset();
+
+    } catch (error) {
+
+        console.error(error);
+
+        pesan.textContent = "Aduan gagal dikirim!";
+        pesan.style.color = "red";
+
+    }
+
+    tombol.disabled = false;
+    tombol.textContent = "Kirim Aduan →";
+
+});
+</script>
 
 </body>
 </html>
