@@ -20,10 +20,7 @@ const PASSWORD_ADMIN = "admin123";
 function loginAdmin() {
 
     const password =
-        document.getElementById(
-            "passwordAdmin"
-        ).value;
-
+        document.getElementById("passwordAdmin").value;
 
     if (password === PASSWORD_ADMIN) {
 
@@ -32,21 +29,16 @@ function loginAdmin() {
             "true"
         );
 
-
         document.getElementById(
             "loginAdmin"
         ).style.display = "none";
-
 
         document.getElementById(
             "halamanAdmin"
         ).style.display = "block";
 
-
         loadData();
-
         loadAduan();
-
 
     } else {
 
@@ -70,7 +62,6 @@ function logoutAdmin() {
         "adminLogin"
     );
 
-
     location.reload();
 
 }
@@ -89,21 +80,17 @@ window.addEventListener(
                 "adminLogin"
             );
 
-
         if (sudahLogin === "true") {
 
             document.getElementById(
                 "loginAdmin"
             ).style.display = "none";
 
-
             document.getElementById(
                 "halamanAdmin"
             ).style.display = "block";
 
-
             loadData();
-
             loadAduan();
 
         }
@@ -112,45 +99,30 @@ window.addEventListener(
 );
 
 
-
 // ==========================================
 // ELEMENT
 // ==========================================
 
 const dataTable =
-    document.getElementById(
-        "dataTable"
-    );
+    document.getElementById("dataTable");
 
 const aduanTable =
-    document.getElementById(
-        "aduanTable"
-    );
+    document.getElementById("aduanTable");
 
 const dataForm =
-    document.getElementById(
-        "dataForm"
-    );
+    document.getElementById("dataForm");
 
 const submitBtn =
-    document.getElementById(
-        "submitBtn"
-    );
+    document.getElementById("submitBtn");
 
 const cancelBtn =
-    document.getElementById(
-        "cancelBtn"
-    );
+    document.getElementById("cancelBtn");
 
 const formTitle =
-    document.getElementById(
-        "formTitle"
-    );
+    document.getElementById("formTitle");
 
 const dataStatus =
-    document.getElementById(
-        "dataStatus"
-    );
+    document.getElementById("dataStatus");
 
 
 // ==========================================
@@ -160,35 +132,29 @@ const dataStatus =
 let sedangEdit = false;
 
 
-
 // ==========================================
-// LOAD DATA
+// LOAD DATA DESA
 // ==========================================
 
 async function loadData() {
 
     dataTable.innerHTML = `
         <tr>
-            <td colspan="6"
-                style="text-align:center;">
+            <td colspan="6" style="text-align:center;">
                 Memuat data...
             </td>
         </tr>
     `;
-
 
     try {
 
         const response =
             await fetch(API_URL);
 
-
         const data =
             await response.json();
 
-
         dataTable.innerHTML = "";
-
 
         if (
             !Array.isArray(data) ||
@@ -197,8 +163,7 @@ async function loadData() {
 
             dataTable.innerHTML = `
                 <tr>
-                    <td colspan="6"
-                        style="text-align:center;">
+                    <td colspan="6" style="text-align:center;">
                         Belum ada data.
                     </td>
                 </tr>
@@ -211,9 +176,7 @@ async function loadData() {
         data.forEach(item => {
 
             const row =
-                document.createElement(
-                    "tr"
-                );
+                document.createElement("tr");
 
 
             row.innerHTML = `
@@ -288,11 +251,9 @@ async function loadData() {
 
         console.error(error);
 
-
         dataTable.innerHTML = `
             <tr>
-                <td colspan="6"
-                    style="text-align:center;">
+                <td colspan="6" style="text-align:center;">
                     Gagal mengambil data dari Google Sheets.
                 </td>
             </tr>
@@ -301,7 +262,6 @@ async function loadData() {
     }
 
 }
-
 
 
 // ==========================================
@@ -314,7 +274,6 @@ dataForm.addEventListener(
 
         e.preventDefault();
 
-
         const data = {
 
             tabel: "Data",
@@ -325,29 +284,19 @@ dataForm.addEventListener(
                 : "tambah",
 
             id:
-                document.getElementById(
-                    "id"
-                ).value,
+                document.getElementById("id").value,
 
             nama:
-                document.getElementById(
-                    "nama"
-                ).value,
+                document.getElementById("nama").value,
 
             kategori:
-                document.getElementById(
-                    "kategori"
-                ).value,
+                document.getElementById("kategori").value,
 
             deskripsi:
-                document.getElementById(
-                    "deskripsi"
-                ).value,
+                document.getElementById("deskripsi").value,
 
             gambar:
-                document.getElementById(
-                    "gambar"
-                ).value
+                document.getElementById("gambar").value
 
         };
 
@@ -363,16 +312,9 @@ dataForm.addEventListener(
             await fetch(
                 API_URL,
                 {
-
                     method: "POST",
-
                     mode: "no-cors",
-
-                    body:
-                        JSON.stringify(
-                            data
-                        )
-
+                    body: JSON.stringify(data)
                 }
             );
 
@@ -414,7 +356,6 @@ dataForm.addEventListener(
 );
 
 
-
 // ==========================================
 // EDIT DATA
 // ==========================================
@@ -426,10 +367,8 @@ async function editData(id) {
         const response =
             await fetch(API_URL);
 
-
         const data =
             await response.json();
-
 
         const item =
             data.find(
@@ -450,33 +389,19 @@ async function editData(id) {
         }
 
 
-        document.getElementById(
-            "id"
-        ).value =
+        document.getElementById("id").value =
             item.id || "";
 
-
-        document.getElementById(
-            "nama"
-        ).value =
+        document.getElementById("nama").value =
             item.nama || "";
 
-
-        document.getElementById(
-            "kategori"
-        ).value =
+        document.getElementById("kategori").value =
             item.kategori || "";
 
-
-        document.getElementById(
-            "deskripsi"
-        ).value =
+        document.getElementById("deskripsi").value =
             item.deskripsi || "";
 
-
-        document.getElementById(
-            "gambar"
-        ).value =
+        document.getElementById("gambar").value =
             item.gambar || "";
 
 
@@ -486,7 +411,6 @@ async function editData(id) {
         formTitle.textContent =
             "Edit Data";
 
-
         submitBtn.textContent =
             "💾 Simpan Perubahan";
 
@@ -494,7 +418,6 @@ async function editData(id) {
         submitBtn.classList.remove(
             "btn-tambah"
         );
-
 
         submitBtn.classList.add(
             "btn-edit"
@@ -506,11 +429,8 @@ async function editData(id) {
 
 
         window.scrollTo({
-
             top: 0,
-
             behavior: "smooth"
-
         });
 
 
@@ -525,7 +445,6 @@ async function editData(id) {
     }
 
 }
-
 
 
 // ==========================================
@@ -543,9 +462,7 @@ async function hapusData(id) {
 
 
     if (!yakin) {
-
         return;
-
     }
 
 
@@ -554,22 +471,17 @@ async function hapusData(id) {
         await fetch(
             API_URL,
             {
-
                 method: "POST",
-
                 mode: "no-cors",
+                body: JSON.stringify({
 
-                body:
-                    JSON.stringify({
+                    tabel: "Data",
 
-                        tabel: "Data",
+                    action: "hapus",
 
-                        action: "hapus",
+                    id: id
 
-                        id: id
-
-                    })
-
+                })
             }
         );
 
@@ -595,7 +507,6 @@ async function hapusData(id) {
 }
 
 
-
 // ==========================================
 // BATAL EDIT
 // ==========================================
@@ -610,7 +521,6 @@ cancelBtn.addEventListener(
 );
 
 
-
 // ==========================================
 // RESET FORM
 // ==========================================
@@ -619,13 +529,10 @@ function resetForm() {
 
     dataForm.reset();
 
-
     sedangEdit = false;
-
 
     formTitle.textContent =
         "Tambah Data";
-
 
     submitBtn.textContent =
         "+ Tambah Data";
@@ -635,7 +542,6 @@ function resetForm() {
         "btn-edit"
     );
 
-
     submitBtn.classList.add(
         "btn-tambah"
     );
@@ -644,11 +550,9 @@ function resetForm() {
     cancelBtn.style.display =
         "none";
 
-
     dataStatus.textContent = "";
 
 }
-
 
 
 // ==========================================
@@ -659,8 +563,7 @@ async function loadAduan() {
 
     aduanTable.innerHTML = `
         <tr>
-            <td colspan="7"
-                style="text-align:center;">
+            <td colspan="9" style="text-align:center;">
                 Memuat aduan...
             </td>
         </tr>
@@ -690,8 +593,7 @@ async function loadAduan() {
 
             aduanTable.innerHTML = `
                 <tr>
-                    <td colspan="7"
-                        style="text-align:center;">
+                    <td colspan="9" style="text-align:center;">
                         Belum ada aduan.
                     </td>
                 </tr>
@@ -705,9 +607,7 @@ async function loadAduan() {
         data.forEach(item => {
 
             const row =
-                document.createElement(
-                    "tr"
-                );
+                document.createElement("tr");
 
 
             row.innerHTML = `
@@ -716,17 +616,38 @@ async function loadAduan() {
                     ${item.id || ""}
                 </td>
 
+
+                <td>
+                    <strong>
+                        ${item.token || "-"}
+                    </strong>
+                </td>
+
+
                 <td>
                     ${item.nama || ""}
                 </td>
+
 
                 <td>
                     ${item.email || ""}
                 </td>
 
+
+                <td>
+                    ${item.kategori || "-"}
+                </td>
+
+
+                <td>
+                    ${item.judul || "-"}
+                </td>
+
+
                 <td>
                     ${item.aduan || ""}
                 </td>
+
 
                 <td>
                     ${item.tanggal || ""}
@@ -751,10 +672,7 @@ async function loadAduan() {
                         </span>`
                     }
 
-                </td>
-
-
-                <td class="aksi">
+                    <br><br>
 
                     <button
                         class="admin-btn btn-edit"
@@ -778,9 +696,7 @@ async function loadAduan() {
             `;
 
 
-            aduanTable.appendChild(
-                row
-            );
+            aduanTable.appendChild(row);
 
         });
 
@@ -792,8 +708,7 @@ async function loadAduan() {
 
         aduanTable.innerHTML = `
             <tr>
-                <td colspan="7"
-                    style="text-align:center;">
+                <td colspan="9" style="text-align:center;">
                     Gagal mengambil data aduan.
                 </td>
             </tr>
@@ -802,7 +717,6 @@ async function loadAduan() {
     }
 
 }
-
 
 
 // ==========================================
@@ -820,9 +734,7 @@ async function beriTanggapan(id) {
 
 
     if (tanggapan === null) {
-
         return;
-
     }
 
 
@@ -844,25 +756,20 @@ async function beriTanggapan(id) {
         await fetch(
             API_URL,
             {
-
                 method: "POST",
-
                 mode: "no-cors",
+                body: JSON.stringify({
 
-                body:
-                    JSON.stringify({
+                    tabel: "Aduan",
 
-                        tabel: "Aduan",
+                    action: "tanggapan",
 
-                        action: "tanggapan",
+                    id: id,
 
-                        id: id,
+                    tanggapan:
+                        tanggapan
 
-                        tanggapan:
-                            tanggapan
-
-                    })
-
+                })
             }
         );
 
@@ -888,7 +795,6 @@ async function beriTanggapan(id) {
 }
 
 
-
 // ==========================================
 // HAPUS ADUAN
 // ==========================================
@@ -904,9 +810,7 @@ async function hapusAduan(id) {
 
 
     if (!yakin) {
-
         return;
-
     }
 
 
@@ -915,22 +819,17 @@ async function hapusAduan(id) {
         await fetch(
             API_URL,
             {
-
                 method: "POST",
-
                 mode: "no-cors",
+                body: JSON.stringify({
 
-                body:
-                    JSON.stringify({
+                    tabel: "Aduan",
 
-                        tabel: "Aduan",
+                    action: "hapus",
 
-                        action: "hapus",
+                    id: id
 
-                        id: id
-
-                    })
-
+                })
             }
         );
 
