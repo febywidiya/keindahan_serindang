@@ -5,283 +5,832 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Aduan Desa Serindang</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5faf7;
+            color: #183d2b;
+        }
+
+        header {
+            background: #14532d;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #14532d;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 7px;
+            background: #14532d;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0f3f22;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 7px;
+            display: none;
+        }
+
+        .success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        #tokenBox {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #ecfdf5;
+            border: 2px solid #22c55e;
+            border-radius: 10px;
+        }
+
+        #tokenHasil {
+            font-size: 22px;
+            font-weight: bold;
+            color: #14532d;
+            margin-top: 10px;
+            word-break: break-all;
+        }
+
+        #hasilCek {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f0fdf4;
+            border-radius: 10px;
+            border: 1px solid #bbf7d0;
+        }
+
+        .hasil-item {
+            margin-bottom: 12px;
+        }
+
+        .hasil-item strong {
+            display: inline-block;
+            min-width: 110px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            background: #fef3c7;
+            color: #92400e;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            background: #14532d;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px;
+            }
+
+            nav {
+                margin-top: 10px;
+            }
+
+            nav a {
+                margin-left: 8px;
+                font-size: 13px;
+            }
+
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-    <nav>
-        <div class="logo">🌿 Desa Serindang</div>
+    <!-- HEADER -->
+    <header>
 
-        <ul>
-            <li><a href="index.html">Beranda</a></li>
-            <li><a href="profil.html">Profil</a></li>
-            <li><a href="keindahan.html">Keindahan</a></li>
-            <li><a href="potensi.html">Potensi</a></li>
-            <li><a href="galeri.html">Galeri</a></li>
-            <li><a href="kontak.html" class="active">Aduan</a></li>
-        </ul>
-    </nav>
-</header>
+        <div class="logo">
+            🌿 Desa Serindang
+        </div>
 
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="profil.html">Profil</a>
+            <a href="keindahan.html">Keindahan</a>
+            <a href="potensi.html">Potensi</a>
+            <a href="galeri.html">Galeri</a>
+            <a href="kontak.html">Aduan</a>
+        </nav>
 
-<!-- =========================
-     FORM ADUAN
-========================= -->
+    </header>
 
-<section class="aduan-section">
 
     <div class="container">
 
-        <h2>Aduan Masyarakat</h2>
+        <h1>Aduan Desa Serindang</h1>
 
         <p>
-            Sampaikan kritik, saran, atau aduan mengenai Desa Serindang.
+            Sampaikan aduan atau keluhan mengenai pelayanan dan kondisi
+            Desa Serindang melalui formulir berikut.
         </p>
 
-        <form id="aduanForm" class="aduan-form">
 
-            <div class="form-group">
+        <!-- FORM ADUAN -->
+        <div class="box">
+
+            <h2>Form Pengaduan</h2>
+
+            <form id="formAduan">
+
                 <label for="nama">Nama</label>
+
                 <input
                     type="text"
                     id="nama"
-                    name="nama"
                     placeholder="Masukkan nama"
-                    required>
-            </div>
+                    required
+                >
 
 
-            <div class="form-group">
                 <label for="email">Email</label>
+
                 <input
                     type="email"
                     id="email"
-                    name="email"
                     placeholder="Masukkan email"
-                    required>
-            </div>
+                    required
+                >
 
 
-            <div class="form-group">
                 <label for="kategori">Kategori</label>
 
-                <select id="kategori" name="kategori" required>
-                    <option value="">Pilih Kategori</option>
-                    <option value="Saran">Saran</option>
-                    <option value="Kritik">Kritik</option>
-                    <option value="Aduan">Aduan</option>
+                <select id="kategori" required>
+
+                    <option value="">-- Pilih Kategori --</option>
+
+                    <option value="Pelayanan Desa">
+                        Pelayanan Desa
+                    </option>
+
+                    <option value="Infrastruktur">
+                        Infrastruktur
+                    </option>
+
+                    <option value="Lingkungan">
+                        Lingkungan
+                    </option>
+
+                    <option value="Kesehatan">
+                        Kesehatan
+                    </option>
+
+                    <option value="Pendidikan">
+                        Pendidikan
+                    </option>
+
+                    <option value="Lainnya">
+                        Lainnya
+                    </option>
+
                 </select>
-            </div>
 
 
-            <div class="form-group">
                 <label for="judul">Judul Aduan</label>
 
                 <input
                     type="text"
                     id="judul"
-                    name="judul"
-                    placeholder="Masukkan judul aduan"
-                    required>
-            </div>
+                    placeholder="Contoh: Jalan rusak"
+                    required
+                >
 
 
-            <div class="form-group">
                 <label for="deskripsi">Isi Aduan</label>
 
                 <textarea
                     id="deskripsi"
-                    name="deskripsi"
-                    rows="6"
-                    placeholder="Tuliskan aduan, kritik, atau saran..."
-                    required></textarea>
-            </div>
+                    placeholder="Tuliskan aduan kamu..."
+                    required
+                ></textarea>
 
 
-            <button type="submit" class="btn" id="btnAduan">
-                Kirim Aduan →
-            </button>
+                <button
+                    type="submit"
+                    class="btn"
+                    id="btnAduan"
+                >
+                    Kirim Aduan
+                </button>
 
-            <p id="aduanMessage"></p>
+            </form>
 
 
-            <!-- =========================
-                 TOKEN HASIL
-            ========================== -->
+            <div
+                id="aduanMessage"
+                class="message"
+            ></div>
 
-            <div id="tokenBox"
-                style="
-                    display:none;
-                    margin-top:20px;
-                    padding:20px;
-                    border-radius:10px;
-                    background:#f0f8f3;
-                    border:1px solid #14532d;
-                ">
 
-                <h3 style="margin-top:0;">
-                    Aduan Berhasil Dikirim!
-                </h3>
+            <!-- TOKEN -->
+            <div id="tokenBox">
+
+                <strong>
+                    Aduan berhasil dikirim!
+                </strong>
 
                 <p>
-                    Simpan token berikut untuk mengecek tanggapan dari admin:
+                    Simpan token berikut untuk mengecek
+                    status aduan kamu:
                 </p>
 
-                <div
-                    style="
-                        font-size:22px;
-                        font-weight:bold;
-                        color:#14532d;
-                        margin:15px 0;
-                    "
-                >
-                    <span id="tokenHasil"></span>
-                </div>
-
-                <p style="font-size:14px;">
-                    Jangan sampai token ini hilang.
-                </p>
+                <div id="tokenHasil"></div>
 
             </div>
 
-        </form>
+        </div>
 
 
-        <!-- =========================
-             CEK PENGADUAN
-        ========================== -->
 
-        <div
-            class="cek-aduan"
-            style="
-                margin-top:40px;
-                padding:25px;
-                border-radius:10px;
-                background:#f0f8f3;
-                border:1px solid #d5e8dc;
-            "
-        >
+        <!-- CEK PENGADUAN -->
+        <div class="box">
 
             <h2>Cek Pengaduan</h2>
 
             <p>
-                Masukkan token pengaduan untuk melihat status dan tanggapan dari admin.
+                Masukkan token yang kamu dapat setelah mengirim aduan.
             </p>
 
 
-            <div
-                style="
-                    display:flex;
-                    gap:10px;
-                    flex-wrap:wrap;
-                    margin-top:20px;
-                "
+            <label for="cekToken">
+                Token Pengaduan
+            </label>
+
+            <input
+                type="text"
+                id="cekToken"
+                placeholder="Contoh: ADU-20260917-123456"
             >
 
-                <input
-                    type="text"
-                    id="cekToken"
-                    placeholder="Contoh: ADU-20260917-123456"
-                    style="
-                        flex:1;
-                        min-width:250px;
-                        padding:12px;
-                        border:1px solid #ccc;
-                        border-radius:8px;
-                    "
-                >
 
-                <button
-                    type="button"
-                    class="btn"
-                    onclick="cekPengaduan()"
-                >
-                    Cek Pengaduan
-                </button>
-
-            </div>
+            <button
+                type="button"
+                class="btn"
+                id="btnCek"
+            >
+                Cek Pengaduan
+            </button>
 
 
-            <!-- HASIL CEK -->
-
-            <div
-                id="hasilCek"
-                style="margin-top:20px;"
-            ></div>
+            <div id="hasilCek"></div>
 
         </div>
 
     </div>
 
-</section>
 
 
-<footer>
-    <p>© 2026 Desa Serindang | Website Keindahan Desa</p>
-</footer>
-
-
-
-<script>
-
-const API_URL = "https://script.google.com/macros/s/AKfycbyxixXPgm970xPYDTOuExKGCa5gfER8zlf8Nu1Wr40A1FdpWocxXQnSdf0PBg-U7V4N/exec";
-
-
-// ===============================
-// MEMBUAT TOKEN
-// ===============================
-
-function buatToken() {
-
-    const sekarang = new Date();
-
-    const tahun = sekarang.getFullYear();
-
-    const bulan = String(sekarang.getMonth() + 1).padStart(2, "0");
-
-    const tanggal = String(sekarang.getDate()).padStart(2, "0");
-
-    const angka = Math.floor(100000 + Math.random() * 900000);
-
-    return "ADU-" + tahun + bulan + tanggal + "-" + angka;
-}
+    <footer>
+        © 2026 Desa Serindang | Website Keindahan Desa
+    </footer>
 
 
 
-// ===============================
-// KIRIM ADUAN
-// ===============================
+    <script>
 
-document.getElementById("aduanForm").addEventListener(
-    "submit",
-    async function(e) {
+        /* =========================
+           URL GOOGLE APPS SCRIPT
+        ========================= */
 
-        e.preventDefault();
-
-        const tombol = document.getElementById("btnAduan");
-
-        const pesan = document.getElementById("aduanMessage");
-
-        const tokenBox = document.getElementById("tokenBox");
-
-        const tokenHasil = document.getElementById("tokenHasil");
+        const API_URL =
+            "https://script.google.com/macros/s/AKfycbyxixXPgm970xPYDTOuExKGCa5gfER8zlf8Nu1Wr40A1FdpWocxXQnSdf0PBg-U7V4N/exec";
 
 
-        tombol.disabled = true;
+        /* =========================
+           MEMBUAT TOKEN
+        ========================= */
 
-        tombol.textContent = "Mengirim...";
+        function buatToken() {
+
+            const tanggal = new Date();
+
+            const tahun = tanggal.getFullYear();
+
+            const bulan = String(
+                tanggal.getMonth() + 1
+            ).padStart(2, "0");
+
+            const hari = String(
+                tanggal.getDate()
+            ).padStart(2, "0");
 
 
-        // BUAT TOKEN
+            const angka = Math.floor(
+                100000 + Math.random() * 900000
+            );
 
-        const token = buatToken();
+
+            return `ADU-${tahun}${bulan}${hari}-${angka}`;
+        }
 
 
-        const data = {
 
-            tabel: "Aduan",
+        /* =========================
+           PESAN
+        ========================= */
+
+        function tampilPesan(
+            pesan,
+            tipe
+        ) {
+
+            const message =
+                document.getElementById(
+                    "aduanMessage"
+                );
+
+
+            message.textContent = pesan;
+
+            message.className =
+                "message " + tipe;
+
+            message.style.display =
+                "block";
+        }
+
+
+
+        /* =========================
+           FORM KIRIM ADUAN
+        ========================= */
+
+        document
+            .getElementById("formAduan")
+            .addEventListener(
+                "submit",
+                async function (event) {
+
+                    event.preventDefault();
+
+
+                    const tombol =
+                        document.getElementById(
+                            "btnAduan"
+                        );
+
+
+                    tombol.disabled = true;
+
+                    tombol.textContent =
+                        "Mengirim...";
+
+
+                    const nama =
+                        document.getElementById(
+                            "nama"
+                        ).value.trim();
+
+
+                    const email =
+                        document.getElementById(
+                            "email"
+                        ).value.trim();
+
+
+                    const kategori =
+                        document.getElementById(
+                            "kategori"
+                        ).value;
+
+
+                    const judul =
+                        document.getElementById(
+                            "judul"
+                        ).value.trim();
+
+
+                    const deskripsi =
+                        document.getElementById(
+                            "deskripsi"
+                        ).value.trim();
+
+
+                    const token =
+                        buatToken();
+
+
+                    const data = {
+
+                        tabel: "Aduan",
+
+                        action: "tambah",
+
+                        id:
+                            Date.now().toString(),
+
+                        token: token,
+
+                        nama: nama,
+
+                        email: email,
+
+                        kategori: kategori,
+
+                        judul: judul,
+
+                        aduan: deskripsi,
+
+                        tanggal:
+                            new Date()
+                                .toLocaleString(
+                                    "id-ID"
+                                ),
+
+                        tanggapan: ""
+
+                    };
+
+
+                    try {
+
+                        await fetch(
+                            API_URL,
+                            {
+                                method: "POST",
+
+                                mode: "no-cors",
+
+                                body:
+                                    JSON.stringify(
+                                        data
+                                    )
+                            }
+                        );
+
+
+                        tampilPesan(
+                            "Aduan berhasil dikirim.",
+                            "success"
+                        );
+
+
+                        document
+                            .getElementById(
+                                "formAduan"
+                            )
+                            .reset();
+
+
+                        document
+                            .getElementById(
+                                "tokenHasil"
+                            )
+                            .textContent =
+                            token;
+
+
+                        document
+                            .getElementById(
+                                "tokenBox"
+                            )
+                            .style.display =
+                            "block";
+
+
+                    } catch (error) {
+
+                        console.error(
+                            error
+                        );
+
+
+                        tampilPesan(
+                            "Aduan gagal dikirim. Silakan coba lagi.",
+                            "error"
+                        );
+
+                    }
+
+
+                    tombol.disabled = false;
+
+                    tombol.textContent =
+                        "Kirim Aduan";
+
+                }
+            );
+
+
+
+        /* =========================
+           TOMBOL CEK PENGADUAN
+        ========================= */
+
+        document
+            .getElementById("btnCek")
+            .addEventListener(
+                "click",
+                cekPengaduan
+            );
+
+
+
+        /* =========================
+           CEK TOKEN
+        ========================= */
+
+        async function cekPengaduan() {
+
+            const input =
+                document.getElementById(
+                    "cekToken"
+                );
+
+
+            const hasil =
+                document.getElementById(
+                    "hasilCek"
+                );
+
+
+            const token =
+                input.value
+                    .trim()
+                    .toUpperCase();
+
+
+            if (!token) {
+
+                hasil.style.display =
+                    "block";
+
+                hasil.innerHTML = `
+                    <div class="message error"
+                         style="display:block;">
+                        Silakan masukkan token pengaduan.
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            hasil.style.display =
+                "block";
+
+
+            hasil.innerHTML =
+                "Sedang mencari pengaduan...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        API_URL +
+                        "?sheet=Aduan"
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                const aduan =
+                    data.find(
+                        item =>
+                            String(
+                                item.token || ""
+                            )
+                            .trim()
+                            .toUpperCase()
+                            === token
+                    );
+
+
+                if (!aduan) {
+
+                    hasil.innerHTML = `
+                        <div class="message error"
+                             style="display:block;">
+                            Token tidak ditemukan.
+                            <br>
+                            Pastikan token yang dimasukkan benar.
+                        </div>
+                    `;
+
+                    return;
+                }
+
+
+                const tanggapan =
+                    String(
+                        aduan.tanggapan || ""
+                    ).trim();
+
+
+                const status =
+                    tanggapan
+                        ? "Sudah Ditanggapi"
+                        : "Menunggu Tanggapan";
+
+
+                hasil.innerHTML = `
+
+                    <h3>
+                        Pengaduan Ditemukan
+                    </h3>
+
+                    <div class="hasil-item">
+                        <strong>Token:</strong>
+                        ${aduan.token || "-"}
+                    </div>
+
+                    <div class="hasil-item">
+                        <strong>Nama:</strong>
+                        ${aduan.nama || "-"}
+                    </div>
+
+                    <div class="hasil-item">
+                        <strong>Kategori:</strong>
+                        ${aduan.kategori || "-"}
+                    </div>
+
+                    <div class="hasil-item">
+                        <strong>Judul:</strong>
+                        ${aduan.judul || "-"}
+                    </div>
+
+                    <div class="hasil-item">
+                        <strong>Tanggal:</strong>
+                        ${aduan.tanggal || "-"}
+                    </div>
+
+                    <div class="hasil-item">
+                        <strong>Status:</strong>
+                        <span class="status">
+                            ${status}
+                        </span>
+                    </div>
+
+                    <hr>
+
+                    <div class="hasil-item">
+                        <strong>Isi Aduan:</strong>
+                        <br>
+                        ${aduan.aduan || "-"}
+                    </div>
+
+                    <hr>
+
+                    <div class="hasil-item">
+                        <strong>Tanggapan Admin:</strong>
+                        <br>
+                        ${
+                            tanggapan
+                            || "Belum ada tanggapan dari admin."
+                        }
+                    </div>
+
+                `;
+
+            } catch (error) {
+
+                console.error(
+                    error
+                );
+
+
+                hasil.innerHTML = `
+                    <div class="message error"
+                         style="display:block;">
+                        Terjadi kesalahan saat mengecek pengaduan.
+                        <br><br>
+                        Silakan coba lagi.
+                    </div>
+                `;
+
+            }
+
+        }
+
+
+
+        /* =========================
+           ENTER UNTUK CEK TOKEN
+        ========================= */
+
+        document
+            .getElementById("cekToken")
+            .addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Enter"
+                    ) {
+
+                        event.preventDefault();
+
+                        cekPengaduan();
+
+                    }
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>
 ```
