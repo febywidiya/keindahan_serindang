@@ -97,6 +97,27 @@
 
             <p id="aduanMessage"></p>
 
+            <!-- TOKEN -->
+            <div id="tokenBox" style="display:none; margin-top:20px; padding:20px; border-radius:10px; background:#f0f8f3; border:1px solid #14532d;">
+
+                <h3 style="margin-top:0;">
+                    Aduan Berhasil Dikirim!
+                </h3>
+
+                <p>
+                    Simpan token berikut untuk mengecek tanggapan dari admin:
+                </p>
+
+                <div style="font-size:22px; font-weight:bold; color:#14532d; margin:15px 0;">
+                    <span id="tokenHasil"></span>
+                </div>
+
+                <p style="font-size:14px;">
+                    Jangan sampai token ini hilang.
+                </p>
+
+            </div>
+
         </form>
 
     </div>
@@ -109,8 +130,32 @@
 
 
 <script>
+
 const API_URL = "https://script.google.com/macros/s/AKfycbyxixXPgm970xPYDTOuExKGCa5gfER8zlf8Nu1Wr40A1FdpWocxXQnSdf0PBg-U7V4N/exec";
 
+
+// ===============================
+// MEMBUAT TOKEN
+// ===============================
+function buatToken() {
+
+    const sekarang = new Date();
+
+    const tahun = sekarang.getFullYear();
+
+    const bulan = String(sekarang.getMonth() + 1).padStart(2, "0");
+
+    const tanggal = String(sekarang.getDate()).padStart(2, "0");
+
+    const angka = Math.floor(100000 + Math.random() * 900000);
+
+    return "ADU-" + tahun + bulan + tanggal + "-" + angka;
+}
+
+
+// ===============================
+// KIRIM ADUAN
+// ===============================
 document.getElementById("aduanForm").addEventListener("submit", async function(e) {
 
     e.preventDefault();
@@ -118,34 +163,70 @@ document.getElementById("aduanForm").addEventListener("submit", async function(e
     const tombol = document.getElementById("btnAduan");
     const pesan = document.getElementById("aduanMessage");
 
+    const tokenBox = document.getElementById("tokenBox");
+    const tokenHasil = document.getElementById("tokenHasil");
+
+
     tombol.disabled = true;
     tombol.textContent = "Mengirim...";
 
+
+    // BUAT TOKEN
+    const token = buatToken();
+
+
     const data = {
+
         tabel: "Aduan",
+
         action: "tambah",
+
         id: Date.now().toString(),
+
+        token: token,
+
         nama: document.getElementById("nama").value,
+
         email: document.getElementById("email").value,
-        aduan:
-            "Kategori: " + document.getElementById("kategori").value +
-            " | Judul: " + document.getElementById("judul").value +
-            " | Isi: " + document.getElementById("deskripsi").value,
-        tanggal: new Date().toLocaleString("id-ID")
+
+        kategori: document.getElementById("kategori").value,
+
+        judul: document.getElementById("judul").value,
+
+        aduan: document.getElementById("deskripsi").value,
+
+        tanggal: new Date().toLocaleString("id-ID"),
+
+        tanggapan: ""
+
     };
+
 
     try {
 
         await fetch(API_URL, {
+
             method: "POST",
+
             mode: "no-cors",
+
             body: JSON.stringify(data)
+
         });
+
 
         pesan.textContent = "Aduan berhasil dikirim!";
         pesan.style.color = "green";
 
+
+        // TAMPILKAN TOKEN
+        tokenHasil.textContent = token;
+
+        tokenBox.style.display = "block";
+
+
         document.getElementById("aduanForm").reset();
+
 
     } catch (error) {
 
@@ -156,10 +237,13 @@ document.getElementById("aduanForm").addEventListener("submit", async function(e
 
     }
 
+
     tombol.disabled = false;
+
     tombol.textContent = "Kirim Aduan →";
 
 });
+
 </script>
 
 </body>
