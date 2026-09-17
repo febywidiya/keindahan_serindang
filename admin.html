@@ -2,225 +2,481 @@
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Admin Desa Serindang</title>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="icon"
+        type="image/png"
+        href="favicon.png">
+
 
     <style>
-        .admin-section {
-            padding: 120px 5% 60px;
-            min-height: 100vh;
+
+        /* =========================
+           LOGIN
+        ========================= */
+
+        .login-admin {
+
+            position: fixed;
+
+            inset: 0;
+
             background: #f5faf5;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            z-index: 9999;
+
         }
+
+
+        .login-box {
+
+            background: white;
+
+            width: 350px;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.15);
+
+            text-align: center;
+
+        }
+
+
+        .login-box h2 {
+
+            color: #075b2d;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .login-box p {
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .login-box input {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 7px;
+
+            box-sizing: border-box;
+
+            margin-bottom: 15px;
+
+            font-size: 15px;
+
+        }
+
+
+        .login-box button {
+
+            width: 100%;
+
+        }
+
+
+        #loginError {
+
+            color: #c0392b;
+
+            font-weight: bold;
+
+            margin-top: 15px;
+
+        }
+
+
+        /* =========================
+           ADMIN
+        ========================= */
+
+        .admin-section {
+
+            padding: 120px 5% 60px;
+
+            min-height: 100vh;
+
+            background: #f5faf5;
+
+        }
+
 
         .admin-container {
+
             max-width: 1100px;
+
             margin: auto;
+
         }
+
 
         .admin-header {
+
             text-align: center;
+
             margin-bottom: 30px;
+
         }
+
 
         .admin-header h1 {
+
             color: #075b2d;
+
             margin-bottom: 10px;
+
         }
+
 
         .admin-card {
+
             background: white;
+
             padding: 25px;
+
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.08);
+
             margin-bottom: 25px;
+
         }
+
 
         .admin-card h2 {
+
             margin-bottom: 20px;
+
             color: #075b2d;
+
         }
+
 
         .form-group {
+
             margin-bottom: 18px;
+
         }
 
+
         .form-group label {
+
             display: block;
+
             margin-bottom: 8px;
+
             font-weight: bold;
+
             color: #075b2d;
+
         }
+
 
         .form-group input,
         .form-group select,
         .form-group textarea {
+
             width: 100%;
+
             padding: 12px;
+
             border: 1px solid #ccc;
+
             border-radius: 7px;
+
             font-family: inherit;
+
             font-size: 14px;
+
             box-sizing: border-box;
+
         }
+
 
         .form-group textarea {
+
             height: 120px;
+
             resize: vertical;
+
         }
+
 
         .admin-btn {
+
             border: none;
+
             padding: 11px 20px;
+
             border-radius: 7px;
+
             cursor: pointer;
+
             font-size: 14px;
+
         }
+
 
         .btn-tambah {
+
             background: #28613b;
+
             color: white;
+
         }
+
 
         .btn-edit {
+
             background: #e0a800;
+
             color: white;
+
         }
+
 
         .btn-hapus {
+
             background: #c0392b;
+
             color: white;
+
         }
+
 
         .btn-batal {
+
             background: #777;
+
             color: white;
+
             margin-left: 5px;
+
         }
+
+
+        .btn-logout {
+
+            background: #8e44ad;
+
+            color: white;
+
+            float: right;
+
+        }
+
 
         .table-container {
+
             overflow-x: auto;
+
         }
 
+
         table {
+
             width: 100%;
+
             border-collapse: collapse;
+
         }
+
 
         table th,
         table td {
+
             padding: 12px;
+
             border-bottom: 1px solid #ddd;
+
             text-align: left;
+
+            vertical-align: top;
+
         }
+
 
         table th {
+
             background: #28613b;
+
             color: white;
+
         }
+
 
         .gambar-preview {
+
             width: 80px;
+
             height: 60px;
+
             object-fit: cover;
+
             border-radius: 6px;
+
         }
+
 
         .aksi {
+
             white-space: nowrap;
+
         }
+
 
         .aksi button {
+
             margin: 2px;
+
         }
+
 
         .status {
+
             margin-top: 15px;
+
             font-weight: bold;
+
         }
 
+
         .btn-refresh {
+
             background: #28613b;
+
             color: white;
+
             margin-bottom: 15px;
+
         }
+
+
+        .tanggapan-box {
+
+            min-width: 180px;
+
+        }
+
+
+        .belum {
+
+            color: #c0392b;
+
+            font-style: italic;
+
+        }
+
+
+        .sudah {
+
+            color: #28613b;
+
+            font-weight: bold;
+
+        }
+
+
     </style>
+
 </head>
+
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
 
-<header>
-    <nav>
+<!-- =========================
+     LOGIN ADMIN
+========================= -->
 
-        <div class="logo">
-            🌿 Desa Serindang
-        </div>
+<div id="loginAdmin"
+     class="login-admin">
 
-        <ul>
+    <div class="login-box">
 
-            <li>
-                <a href="index.html">
-                    Beranda
-                </a>
-            </li>
+        <h2>🔐 Login Admin</h2>
 
-            <li>
-                <a href="profil.html">
-                    Profil
-                </a>
-            </li>
+        <p>
+            Silakan masukkan password admin
+        </p>
 
-            <li>
-                <a href="keindahan.html">
-                    Keindahan
-                </a>
-            </li>
+        <input
+            type="password"
+            id="passwordAdmin"
+            placeholder="Masukkan password"
+            onkeydown="if(event.key === 'Enter') loginAdmin()">
 
-            <li>
-                <a href="potensi.html">
-                    Potensi
-                </a>
-            </li>
+        <button
+            onclick="loginAdmin()"
+            class="admin-btn btn-tambah">
 
-            <li>
-                <a href="galeri.html">
-                    Galeri
-                </a>
-            </li>
+            🔑 Masuk
 
-            <li>
-                <a href="kontak.html">
-                    Aduan
-                </a>
-            </li>
+        </button>
 
-            <li>
-                <a href="admin.html" class="active">
-                    Admin
-                </a>
-            </li>
+        <p id="loginError"></p>
 
-        </ul>
+    </div>
 
-    </nav>
-</header>
+</div>
 
 
-<!-- ================= ADMIN ================= -->
 
-<section class="admin-section">
+<!-- =========================
+     HALAMAN ADMIN
+========================= -->
+
+<section
+    class="admin-section"
+    id="halamanAdmin"
+    style="display:none;">
+
 
     <div class="admin-container">
 
+
         <div class="admin-header">
 
-            <h1>Admin Desa Serindang</h1>
+            <button
+                onclick="logoutAdmin()"
+                class="admin-btn btn-logout">
+
+                🚪 Logout
+
+            </button>
+
+
+            <h1>
+                Admin Desa Serindang
+            </h1>
 
             <p>
                 Kelola data Desa Serindang dengan mudah.
@@ -229,7 +485,10 @@
         </div>
 
 
-        <!-- ================= FORM DATA ================= -->
+
+        <!-- =========================
+             FORM DATA
+        ========================= -->
 
         <div class="admin-card">
 
@@ -237,7 +496,9 @@
                 Tambah Data
             </h2>
 
+
             <form id="dataForm">
+
 
                 <div class="form-group">
 
@@ -275,7 +536,9 @@
                         Kategori
                     </label>
 
-                    <select id="kategori" required>
+                    <select
+                        id="kategori"
+                        required>
 
                         <option value="">
                             Pilih Kategori
@@ -352,18 +615,23 @@
                     class="status">
                 </div>
 
+
             </form>
 
         </div>
 
 
-        <!-- ================= DATA DESA ================= -->
+
+        <!-- =========================
+             DATA DESA
+        ========================= -->
 
         <div class="admin-card">
 
             <h2>
                 Data Desa
             </h2>
+
 
             <button
                 type="button"
@@ -373,6 +641,7 @@
                 🔄 Refresh Data
 
             </button>
+
 
             <div class="table-container">
 
@@ -398,6 +667,7 @@
 
                     </thead>
 
+
                     <tbody id="dataTable">
 
                         <tr>
@@ -421,13 +691,17 @@
         </div>
 
 
-        <!-- ================= ADUAN ================= -->
+
+        <!-- =========================
+             ADUAN
+        ========================= -->
 
         <div class="admin-card">
 
             <h2>
                 Data Aduan Masyarakat
             </h2>
+
 
             <button
                 type="button"
@@ -437,6 +711,7 @@
                 🔄 Refresh Aduan
 
             </button>
+
 
             <div class="table-container">
 
@@ -456,18 +731,21 @@
 
                             <th>Tanggal</th>
 
+                            <th>Tanggapan</th>
+
                             <th>Aksi</th>
 
                         </tr>
 
                     </thead>
 
+
                     <tbody id="aduanTable">
 
                         <tr>
 
                             <td
-                                colspan="6"
+                                colspan="7"
                                 style="text-align:center;">
 
                                 Memuat aduan...
@@ -484,12 +762,12 @@
 
         </div>
 
+
     </div>
 
 </section>
 
 
-<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -504,7 +782,8 @@
         </p>
 
         <p class="copyright">
-            © 2026 Desa Serindang | Website Keindahan Desa
+            © 2026 Desa Serindang |
+            Website Keindahan Desa
         </p>
 
     </div>
@@ -512,7 +791,9 @@
 </footer>
 
 
+
 <script src="admin.js"></script>
+
 
 </body>
 
