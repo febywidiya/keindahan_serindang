@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 
@@ -26,6 +27,11 @@
     </nav>
 </header>
 
+
+<!-- =========================
+     FORM ADUAN
+========================= -->
+
 <section class="aduan-section">
 
     <div class="container">
@@ -48,6 +54,7 @@
                     required>
             </div>
 
+
             <div class="form-group">
                 <label for="email">Email</label>
                 <input
@@ -57,6 +64,7 @@
                     placeholder="Masukkan email"
                     required>
             </div>
+
 
             <div class="form-group">
                 <label for="kategori">Kategori</label>
@@ -69,6 +77,7 @@
                 </select>
             </div>
 
+
             <div class="form-group">
                 <label for="judul">Judul Aduan</label>
 
@@ -79,6 +88,7 @@
                     placeholder="Masukkan judul aduan"
                     required>
             </div>
+
 
             <div class="form-group">
                 <label for="deskripsi">Isi Aduan</label>
@@ -91,14 +101,27 @@
                     required></textarea>
             </div>
 
+
             <button type="submit" class="btn" id="btnAduan">
                 Kirim Aduan →
             </button>
 
             <p id="aduanMessage"></p>
 
-            <!-- TOKEN -->
-            <div id="tokenBox" style="display:none; margin-top:20px; padding:20px; border-radius:10px; background:#f0f8f3; border:1px solid #14532d;">
+
+            <!-- =========================
+                 TOKEN HASIL
+            ========================== -->
+
+            <div id="tokenBox"
+                style="
+                    display:none;
+                    margin-top:20px;
+                    padding:20px;
+                    border-radius:10px;
+                    background:#f0f8f3;
+                    border:1px solid #14532d;
+                ">
 
                 <h3 style="margin-top:0;">
                     Aduan Berhasil Dikirim!
@@ -108,7 +131,14 @@
                     Simpan token berikut untuk mengecek tanggapan dari admin:
                 </p>
 
-                <div style="font-size:22px; font-weight:bold; color:#14532d; margin:15px 0;">
+                <div
+                    style="
+                        font-size:22px;
+                        font-weight:bold;
+                        color:#14532d;
+                        margin:15px 0;
+                    "
+                >
                     <span id="tokenHasil"></span>
                 </div>
 
@@ -120,13 +150,80 @@
 
         </form>
 
+
+        <!-- =========================
+             CEK PENGADUAN
+        ========================== -->
+
+        <div
+            class="cek-aduan"
+            style="
+                margin-top:40px;
+                padding:25px;
+                border-radius:10px;
+                background:#f0f8f3;
+                border:1px solid #d5e8dc;
+            "
+        >
+
+            <h2>Cek Pengaduan</h2>
+
+            <p>
+                Masukkan token pengaduan untuk melihat status dan tanggapan dari admin.
+            </p>
+
+
+            <div
+                style="
+                    display:flex;
+                    gap:10px;
+                    flex-wrap:wrap;
+                    margin-top:20px;
+                "
+            >
+
+                <input
+                    type="text"
+                    id="cekToken"
+                    placeholder="Contoh: ADU-20260917-123456"
+                    style="
+                        flex:1;
+                        min-width:250px;
+                        padding:12px;
+                        border:1px solid #ccc;
+                        border-radius:8px;
+                    "
+                >
+
+                <button
+                    type="button"
+                    class="btn"
+                    onclick="cekPengaduan()"
+                >
+                    Cek Pengaduan
+                </button>
+
+            </div>
+
+
+            <!-- HASIL CEK -->
+
+            <div
+                id="hasilCek"
+                style="margin-top:20px;"
+            ></div>
+
+        </div>
+
     </div>
 
 </section>
 
+
 <footer>
     <p>© 2026 Desa Serindang | Website Keindahan Desa</p>
 </footer>
+
 
 
 <script>
@@ -137,6 +234,7 @@ const API_URL = "https://script.google.com/macros/s/AKfycbyxixXPgm970xPYDTOuExKG
 // ===============================
 // MEMBUAT TOKEN
 // ===============================
+
 function buatToken() {
 
     const sekarang = new Date();
@@ -153,98 +251,37 @@ function buatToken() {
 }
 
 
+
 // ===============================
 // KIRIM ADUAN
 // ===============================
-document.getElementById("aduanForm").addEventListener("submit", async function(e) {
 
-    e.preventDefault();
+document.getElementById("aduanForm").addEventListener(
+    "submit",
+    async function(e) {
 
-    const tombol = document.getElementById("btnAduan");
-    const pesan = document.getElementById("aduanMessage");
+        e.preventDefault();
 
-    const tokenBox = document.getElementById("tokenBox");
-    const tokenHasil = document.getElementById("tokenHasil");
+        const tombol = document.getElementById("btnAduan");
 
+        const pesan = document.getElementById("aduanMessage");
 
-    tombol.disabled = true;
-    tombol.textContent = "Mengirim...";
+        const tokenBox = document.getElementById("tokenBox");
 
-
-    // BUAT TOKEN
-    const token = buatToken();
+        const tokenHasil = document.getElementById("tokenHasil");
 
 
-    const data = {
+        tombol.disabled = true;
 
-        tabel: "Aduan",
-
-        action: "tambah",
-
-        id: Date.now().toString(),
-
-        token: token,
-
-        nama: document.getElementById("nama").value,
-
-        email: document.getElementById("email").value,
-
-        kategori: document.getElementById("kategori").value,
-
-        judul: document.getElementById("judul").value,
-
-        aduan: document.getElementById("deskripsi").value,
-
-        tanggal: new Date().toLocaleString("id-ID"),
-
-        tanggapan: ""
-
-    };
+        tombol.textContent = "Mengirim...";
 
 
-    try {
+        // BUAT TOKEN
 
-        await fetch(API_URL, {
-
-            method: "POST",
-
-            mode: "no-cors",
-
-            body: JSON.stringify(data)
-
-        });
+        const token = buatToken();
 
 
-        pesan.textContent = "Aduan berhasil dikirim!";
-        pesan.style.color = "green";
+        const data = {
 
-
-        // TAMPILKAN TOKEN
-        tokenHasil.textContent = token;
-
-        tokenBox.style.display = "block";
-
-
-        document.getElementById("aduanForm").reset();
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        pesan.textContent = "Aduan gagal dikirim!";
-        pesan.style.color = "red";
-
-    }
-
-
-    tombol.disabled = false;
-
-    tombol.textContent = "Kirim Aduan →";
-
-});
-
-</script>
-
-</body>
-</html>
+            tabel: "Aduan",
+```
